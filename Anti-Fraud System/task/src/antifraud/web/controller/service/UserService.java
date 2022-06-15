@@ -16,14 +16,14 @@ public class UserService {
     @Autowired
     UserDTOMapper userDTOMapper;
 
-    public User registerNewUser(UserDto userDto){
+    public UserDto registerNewUser(UserDto userDto){
         if (userExist(userDto.getUsername())){
             throw new UserExistException();
         }
 
         User user = userDTOMapper.toUser(userDto);
         userRepository.save(user);
-        return user;
+        return userDTOMapper.toUserDtoCreated(user);
     }
 
 

@@ -34,9 +34,8 @@ public class ApiController {
 
     @PostMapping("/api/auth/user")
     public ResponseEntity<?> registerUserAccount(@Valid @RequestBody UserDto userDto){
-        User user = userService.registerNewUser(userDto);
-
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        UserDto dto = userService.registerNewUser(userDto);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
 
