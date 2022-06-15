@@ -105,35 +105,6 @@ files:
 
     }
   learner_created: false
-- name: src/antifraud/service/TransactionService.java
-  visible: true
-  text: |
-    package antifraud.service;
-
-
-    import org.springframework.stereotype.Service;
-
-    @Service
-    public class TransactionService {
-        public enum STATUS{
-            ALLOWED,
-            MANUAL_PROCESSING,
-            PROHIBITED
-        }
-
-        public STATUS getStatus(long amount){
-            if (amount <=200){
-                return STATUS.ALLOWED;
-            } else if (amount <=1500){
-                return STATUS.MANUAL_PROCESSING;
-            } else {
-                return STATUS.PROHIBITED;
-            }
-        }
-
-
-    }
-  learner_created: false
 - name: test/AntiFraudTest.java
   visible: false
   text: |-
@@ -569,6 +540,65 @@ files:
                         new TestHint(userListApi, "", "Usernames must be case insensitive.")), // 30
 
         };
+    }
+  learner_created: false
+- name: src/antifraud/mappers/UserDTOMapper.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/persistence/dao/UserRepository.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/persistence/model/User.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/security/RestAuthenticationEntryPoint.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/security/WebSecurityConfigurerImpl.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/dto/UserDto.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/dto/UserDtoResponse.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/error/UserExistException.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/controller/service/TransactionService.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/controller/service/UserService.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/controller/service/service/TransactionService.java
+  visible: true
+  text: |
+    package antifraud.service;
+
+
+    import org.springframework.stereotype.Service;
+
+    @Service
+    public class TransactionService {
+        public enum STATUS{
+            ALLOWED,
+            MANUAL_PROCESSING,
+            PROHIBITED
+        }
+
+        public STATUS getStatus(long amount){
+            if (amount <=200){
+                return STATUS.ALLOWED;
+            } else if (amount <=1500){
+                return STATUS.MANUAL_PROCESSING;
+            } else {
+                return STATUS.PROHIBITED;
+            }
+        }
+
+
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/18068#comment
