@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/657120/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Wed, 15 Jun 2022 10:20:15 UTC
+update_date: Thu, 01 Jan 1970 00:00:00 UTC
 stages:
 - id: 1161
   step: 18067
@@ -39,12 +39,14 @@ topics:
     theory_id: 6569
   - title: Computer algorithms
     theory_id: 16547
-  - title: Immutability
-    theory_id: 7929
   - title: The big O notation
     theory_id: 16699
+  - title: Best, average and worst cases
+    theory_id: 20084
   - title: Data structures
     theory_id: 16927
+  - title: Immutability
+    theory_id: 7929
   - title: HTML basics
     theory_id: 6434
   - title: HTTP URL
@@ -171,10 +173,6 @@ topics:
     theory_id: 3614
   - title: Package
     theory_id: 3621
-  - title: Hierarchy of exceptions
-    theory_id: 3570
-  - title: Exception handling
-    theory_id: 3552
   - title: Build tools
     theory_id: 4284
   - title: Command line overview
@@ -197,22 +195,18 @@ topics:
     theory_id: 15090
   - title: Pseudocode basics
     theory_id: 19510
-  - title: External resources
-    theory_id: 6216
   - title: Fixed-size array
     theory_id: 20078
   - title: Dynamic array
     theory_id: 5357
+  - title: External resources
+    theory_id: 6216
   - title: Libraries
     theory_id: 8504
   - title: Frameworks
     theory_id: 6701
   - title: JSON
     theory_id: 6854
-  - title: Synchronous, asynchronous, parallel
-    theory_id: 9332
-  - title: Processes and threads
-    theory_id: 9420
   - title: YAML
     theory_id: 12722
   - title: Introduction to software architecture
@@ -223,8 +217,6 @@ topics:
     theory_id: 3492
   - title: Generics and Object
     theory_id: 3493
-  - title: Lambda expressions
-    theory_id: 11635
   - title: What are collections
     theory_id: 3770
   - title: The Collections Framework overview
@@ -235,20 +227,6 @@ topics:
     theory_id: 3581
   - title: The Set interface
     theory_id: 3575
-  - title: Threads as objects
-    theory_id: 4875
-  - title: Custom threads
-    theory_id: 4876
-  - title: Thread management
-    theory_id: 3619
-  - title: Exceptions in threads
-    theory_id: 4882
-  - title: Shared data
-    theory_id: 3610
-  - title: Thread synchronization
-    theory_id: 3557
-  - title: Collections and thread-safety
-    theory_id: 4984
   - title: MVC
     theory_id: 17197
   - title: 'Hashing: overview'
@@ -259,8 +237,6 @@ topics:
     theory_id: 13054
   - title: The Map interface
     theory_id: 3558
-  - title: Thread-safe maps
-    theory_id: 17081
   - title: Defining classes
     theory_id: 3618
   - title: Constructor
@@ -350,12 +326,14 @@ topics:
     theory_id: 19487
   - title: Bean lifecycle
     theory_id: 19550
-  - title: POST vs. PUT requests
-    theory_id: 13714
   - title: CRUD repositories
     theory_id: 18031
+  - title: POST vs. PUT requests
+    theory_id: 13714
   - title: Interfaces
     theory_id: 9640
+  - title: Lambda expressions
+    theory_id: 11635
   - title: Method references
     theory_id: 3620
   - title: Functional interfaces

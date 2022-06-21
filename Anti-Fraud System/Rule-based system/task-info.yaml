@@ -23,6 +23,7 @@ files:
         id 'org.springframework.boot' version '2.3.1.RELEASE'
         id 'io.spring.dependency-management' version '1.0.9.RELEASE'
         id "io.freefair.lombok" version "6.0.0-m2"
+        id 'net.ltgt.apt-idea' version '0.21'
     }
 
 
@@ -37,6 +38,13 @@ files:
         implementation 'org.springframework.boot:spring-boot-starter-actuator'
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.1.0.Final'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        runtimeOnly 'com.h2database:h2'
+        // https://mvnrepository.com/artifact/org.mapstruct/mapstruct
+        implementation 'org.mapstruct:mapstruct:1.5.1.Final'
+        annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.1.Final'
     }
   learner_created: false
 - name: src/resources/application.properties
@@ -47,6 +55,21 @@ files:
     management.endpoints.web.exposure.include=*
     management.endpoint.shutdown.enabled=true
     spring.jackson.serialization.INDENT_OUTPUT=true
+
+    spring.datasource.driverClassName=org.h2.Driver
+    spring.datasource.url=jdbc:h2:file:../service_db
+    spring.datasource.username=sa
+
+    #data settings
+    spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+    spring.jpa.hibernate.ddl-auto=update
+
+
+    #console settings
+    spring.h2.console.path=/h2
+    spring.h2.console.enabled=true
+    spring.h2.console.settings.trace=false
+    spring.jpa.show-sql=true
   learner_created: false
 - name: src/antifraud/web/controller/ApiController.java
   visible: true
@@ -54,8 +77,11 @@ files:
     package antifraud.web.controller;
 
 
-    import antifraud.service.TransactionService;
+    import antifraud.persistence.model.User;
+    import antifraud.web.controller.service.TransactionService;
+    import antifraud.web.controller.service.UserService;
     import antifraud.web.dto.TransactionDto;
+    import antifraud.web.dto.UserDto;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.HttpStatus;
     import org.springframework.http.ResponseEntity;
@@ -70,15 +96,26 @@ files:
     public class ApiController {
 
         @Autowired
+        UserService userService;
+        @Autowired
         TransactionService transactionService;
 
-    @PostMapping("/api/antifraud/transaction")
-        public ResponseEntity<?> addTransaction(@Valid @RequestBody TransactionDto transactionDto){
-        HashMap<String, TransactionService.STATUS> map = new HashMap<>();
-        map.put("result",transactionService.getStatus(transactionDto.getAmount()));
+        @PostMapping("/api/antifraud/transaction")
+        public ResponseEntity<?> addTransaction(@Valid @RequestBody TransactionDto transactionDto) {
+            HashMap<String, TransactionService.STATUS> map = new HashMap<>();
+            map.put("result", transactionService.getStatus(transactionDto.getAmount()));
 
-         return new ResponseEntity<>(map, HttpStatus.OK);
-    }
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        }
+
+        @PostMapping("/api/auth/user")
+        public ResponseEntity<?> registerUserAccount(@Valid @RequestBody UserDto userDto){
+            User user = userService.registerNewUser(userDto);
+
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+
+
     }
   learner_created: false
 - name: src/antifraud/web/dto/TransactionDto.java
@@ -105,10 +142,181 @@ files:
 
     }
   learner_created: false
-- name: src/antifraud/service/TransactionService.java
+- name: src/antifraud/mappers/UserDTOMapper.java
   visible: true
   text: |
-    package antifraud.service;
+    package antifraud.mappers;
+
+    import antifraud.persistence.model.User;
+    import antifraud.web.dto.UserDto;
+    import org.mapstruct.Mapper;
+
+    @Mapper(componentModel = "spring")
+    public interface UserDTOMapper {
+
+        User toUser (UserDto userDto);
+    }
+  learner_created: false
+- name: src/antifraud/persistence/dao/UserRepository.java
+  visible: true
+  text: |
+    package antifraud.persistence.dao;
+
+    import antifraud.persistence.model.User;
+    import org.springframework.data.jpa.repository.JpaRepository;
+    import org.springframework.stereotype.Repository;
+
+    @Repository
+    public interface UserRepository extends JpaRepository<User, Long> {
+
+        User findByUserNameIgnoreCase(String userName);
+    }
+  learner_created: false
+- name: src/antifraud/persistence/model/User.java
+  visible: true
+  text: |
+    package antifraud.persistence.model;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    import javax.persistence.*;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Entity
+    @Table(name = "user_account")
+    public class User {
+
+        @Id
+        @Column(unique = true, nullable = false)
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long id;
+
+        @Column
+        private String name;
+
+        @Column(name = "user_name")
+        private String userName;
+
+        @Column(name = "password")
+        private String password;
+    }
+  learner_created: false
+- name: src/antifraud/security/RestAuthenticationEntryPoint.java
+  visible: true
+  text: |
+    package antifraud.security;
+
+    import org.springframework.security.core.AuthenticationException;
+    import org.springframework.security.web.AuthenticationEntryPoint;
+    import org.springframework.stereotype.Component;
+
+    import javax.servlet.ServletException;
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.io.IOException;
+
+    @Component
+    public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
+        @Override
+        public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+        }
+    }
+  learner_created: false
+- name: src/antifraud/security/WebSecurityConfigurerImpl.java
+  visible: true
+  text: |
+    package antifraud.security;
+
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpMethod;
+    import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+    import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+    import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+    import org.springframework.security.config.http.SessionCreationPolicy;
+
+    @EnableWebSecurity
+    public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
+        @Autowired
+        RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+        public void configure(HttpSecurity http) throws Exception {
+            http.httpBasic()
+                    .authenticationEntryPoint(restAuthenticationEntryPoint) // Handles auth error
+                    .and()
+                    .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
+                    .and()
+                    .authorizeRequests() // manage access
+                    .antMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
+                    .antMatchers("/actuator/shutdown").permitAll() // needs to run test
+                    // other matchers
+                    .and()
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session
+        }
+
+
+
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/UserDto.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    import javax.validation.constraints.NotBlank;
+    import javax.validation.constraints.NotNull;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class UserDto {
+
+        @NotBlank
+        @NotNull
+        private String name;
+        @NotBlank
+        @NotNull
+        private String username;
+        @NotNull
+        @NotBlank
+        private String password;
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/UserDtoResponse.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+    public class UserDtoResponse {
+    }
+  learner_created: false
+- name: src/antifraud/web/error/UserExistException.java
+  visible: true
+  text: |
+    package antifraud.web.error;
+
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "User exist!")
+    public class UserExistException extends RuntimeException {
+    }
+  learner_created: false
+- name: src/antifraud/web/controller/service/TransactionService.java
+  visible: true
+  text: |
+    package antifraud.web.controller.service;
 
 
     import org.springframework.stereotype.Service;
@@ -132,6 +340,79 @@ files:
         }
 
 
+    }
+  learner_created: false
+- name: src/antifraud/web/controller/service/UserService.java
+  visible: true
+  text: |
+    package antifraud.web.controller.service;
+
+    import antifraud.mappers.UserDTOMapper;
+    import antifraud.persistence.dao.UserRepository;
+    import antifraud.persistence.model.User;
+    import antifraud.web.dto.UserDto;
+    import antifraud.web.error.UserExistException;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Service;
+
+    @Service
+    public class UserService {
+        @Autowired
+        UserRepository userRepository;
+
+        @Autowired
+        UserDTOMapper userDTOMapper;
+
+        public User registerNewUser(UserDto userDto){
+            if (userExist(userDto.getUsername())){
+                throw new UserExistException();
+            }
+
+            User user = userDTOMapper.toUser(userDto);
+            userRepository.save(user);
+            return user;
+        }
+
+
+        private boolean userExist(String userName){
+            return userRepository.findByUserNameIgnoreCase(userName) != null;
+        }
+
+
+
+    }
+  learner_created: false
+- name: src/generated/antifraud/mappers/UserDTOMapperImpl.java
+  visible: true
+  text: |
+    package antifraud.mappers;
+
+    import antifraud.persistence.model.User;
+    import antifraud.web.dto.UserDto;
+    import javax.annotation.processing.Generated;
+    import org.springframework.stereotype.Component;
+
+    @Generated(
+        value = "org.mapstruct.ap.MappingProcessor",
+        date = "2022-06-15T18:23:56+0700",
+        comments = "version: 1.5.1.Final, compiler: javac, environment: Java 18.0.1.1 (Oracle Corporation)"
+    )
+    @Component
+    public class UserDTOMapperImpl implements UserDTOMapper {
+
+        @Override
+        public User toUser(UserDto userDto) {
+            if ( userDto == null ) {
+                return null;
+            }
+
+            User user = new User();
+
+            user.setName( userDto.getName() );
+            user.setPassword( userDto.getPassword() );
+
+            return user;
+        }
     }
   learner_created: false
 - name: test/AntiFraudTest.java
@@ -1380,6 +1661,6 @@ files:
         };
     }
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/18071#comment
+feedback_link: https://hyperskill.org/projects/232/stages/1165/implement#comment
 status: Unchecked
 record: -1

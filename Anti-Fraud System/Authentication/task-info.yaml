@@ -542,42 +542,51 @@ files:
         };
     }
   learner_created: false
-- name: src/antifraud/mappers/UserDTOMapper.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/persistence/dao/UserRepository.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/persistence/model/User.java
+- name: src/generated/antifraud/mappers/UserDTOMapperImpl.java
   visible: true
   learner_created: true
 - name: src/antifraud/security/RestAuthenticationEntryPoint.java
   visible: true
   learner_created: true
-- name: src/antifraud/security/WebSecurityConfigurerImpl.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/web/dto/UserDto.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/web/dto/UserDtoResponse.java
+- name: src/antifraud/web/controller/service/TransactionService.java
   visible: true
   learner_created: true
 - name: src/antifraud/web/error/UserExistException.java
   visible: true
   learner_created: true
-- name: src/antifraud/web/controller/service/TransactionService.java
+- name: src/antifraud/web/dto/UserDto.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/security/WebSecurityConfigurerImpl.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/persistence/dao/UserRepository.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/dto/UserDtoResponse.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/persistence/model/User.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/mappers/UserDTOMapper.java
   visible: true
   learner_created: true
 - name: src/antifraud/web/controller/service/UserService.java
   visible: true
   learner_created: true
-- name: src/generated/antifraud/mappers/UserDTOMapperImpl.java
+- name: src/antifraud/web/dto/ResponseNewUserDto.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/learn/step/18068#comment
+- name: src/antifraud/web/dto/UserInfoDto.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/error/UserNotFoundException.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/projects/232/stages/1162/implement#comment
 status: Failed
 feedback:
   message: Failed to launch checking
-  time: Wed, 15 Jun 2022 11:25:10 UTC
-record: -1
+  time: Tue, 21 Jun 2022 12:19:21 UTC
+record: 1

@@ -1,19 +1,26 @@
 package antifraud.mappers;
 
 import antifraud.persistence.model.User;
+import antifraud.web.dto.ResponseNewUserDto;
 import antifraud.web.dto.UserDto;
+import antifraud.web.dto.UserInfoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface UserDTOMapper {
-    @Mapping(ignore = true, target = "id")
-    @Mapping(source = "username", target = "userName")
+
+    @Mapping(target="userName", source="username")
     User toUser (UserDto userDto);
 
-    @Mapping(ignore = true, target = "password")
-    @Mapping(source = "userName", target = "username")
-    UserDto toUserDtoCreated(User user);
+    @Mapping(target="username", source="userName")
+    ResponseNewUserDto toResponseUserDto (User User);
 
+    @Mapping(target="username", source="userName")
+    UserInfoDto toUserInfDto (User user);
+
+    List<UserInfoDto> toUserInfos(List<User> users);
 
 }
