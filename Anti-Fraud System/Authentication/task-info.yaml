@@ -575,9 +575,6 @@ files:
 - name: src/antifraud/persistence/model/User.java
   visible: true
   learner_created: true
-- name: src/antifraud/web/dto/UserInfoDto.java
-  visible: true
-  learner_created: true
 - name: src/antifraud/mappers/UserDTOMapper.java
   visible: true
   learner_created: true
@@ -590,9 +587,9 @@ files:
 - name: src/antifraud/security/UserDetailsImpl.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/projects/232/stages/1162/implement#comment
+feedback_link: https://hyperskill.org/learn/step/18068#comment
 status: Failed
 feedback:
   message: Failed to launch checking
-  time: Wed, 22 Jun 2022 10:06:36 UTC
+  time: Wed, 22 Jun 2022 10:43:37 UTC
 record: 1

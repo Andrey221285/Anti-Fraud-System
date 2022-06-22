@@ -3,7 +3,6 @@ package antifraud.mappers;
 import antifraud.persistence.model.User;
 import antifraud.web.dto.ResponseNewUserDto;
 import antifraud.web.dto.UserDto;
-import antifraud.web.dto.UserInfoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -18,9 +17,7 @@ public interface UserDTOMapper {
     @Mapping(target="username", source="userName")
     ResponseNewUserDto toResponseUserDto (User User);
 
-    @Mapping(target="username", source="userName")
-    UserInfoDto toUserInfDto (User user);
 
-    List<UserInfoDto> toUserInfos(List<User> users);
+    List<ResponseNewUserDto> toUserInfos(List<User> users);
 
 }

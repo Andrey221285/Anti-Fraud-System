@@ -3,7 +3,6 @@ package antifraud.mappers;
 import antifraud.persistence.model.User;
 import antifraud.web.dto.ResponseNewUserDto;
 import antifraud.web.dto.UserDto;
-import antifraud.web.dto.UserInfoDto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -11,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-22T16:03:19+0700",
-    comments = "version: 1.5.1.Final, compiler: javac, environment: Java 15.0.2 (Oracle Corporation)"
+    date = "2022-06-22T17:41:22+0700",
+    comments = "version: 1.5.1.Final, compiler: javac, environment: Java 18.0.1.1 (Oracle Corporation)"
 )
 @Component
 public class UserDTOMapperImpl implements UserDTOMapper {
@@ -48,28 +47,14 @@ public class UserDTOMapperImpl implements UserDTOMapper {
     }
 
     @Override
-    public UserInfoDto toUserInfDto(User user) {
-        if ( user == null ) {
-            return null;
-        }
-
-        UserInfoDto userInfoDto = new UserInfoDto();
-
-        userInfoDto.setUsername( user.getUserName() );
-        userInfoDto.setName( user.getName() );
-
-        return userInfoDto;
-    }
-
-    @Override
-    public List<UserInfoDto> toUserInfos(List<User> users) {
+    public List<ResponseNewUserDto> toUserInfos(List<User> users) {
         if ( users == null ) {
             return null;
         }
 
-        List<UserInfoDto> list = new ArrayList<UserInfoDto>( users.size() );
+        List<ResponseNewUserDto> list = new ArrayList<ResponseNewUserDto>( users.size() );
         for ( User user : users ) {
-            list.add( toUserInfDto( user ) );
+            list.add( toResponseUserDto( user ) );
         }
 
         return list;
