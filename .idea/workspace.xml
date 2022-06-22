@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b6821d8-8406-4c67-8ce5-071a35975a24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/dto/ResponseNewUserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/dto/UserInfoDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/error/UserNotFoundException.java" afterDir="false" />
+    <list default="true" id="ac31c355-9db1-4b32-bd0f-c9659d992628" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/security/UserDetailsImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/security/UserDetailsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
@@ -27,34 +25,25 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frameworkLessonHistory/storage.storageData" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frameworkLessonHistory/storage.storageRecordIndex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Anti-Fraud System/task/Anti-Fraud_System.Anti-Fraud_System-task.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Anti-Fraud System/task/Anti-Fraud_System.Anti-Fraud_System-task.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Anti-Fraud System/task/Anti-Fraud_System.Anti-Fraud_System-task.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Anti-Fraud System/task/Anti-Fraud_System.Anti-Fraud_System-task.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/Authentication/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/Authentication/task-info.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/Authorization/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/Authorization/task-info.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/Feedback/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/Feedback/task-info.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/Rule-based system/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/Rule-based system/task-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/Simple transaction validation/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/Simple transaction validation/task-info.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/Stolen cards   suspicious IPs/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/Stolen cards   suspicious IPs/task-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/mappers/UserDTOMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/mappers/UserDTOMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/mappers/UserDTOMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/mappers/UserDTOMapperImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/security/WebSecurityConfigurerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/security/WebSecurityConfigurerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/web/controller/ApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/web/controller/ApiController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/web/controller/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/web/controller/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/web/dto/UserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/out/production/classes/antifraud/web/dto/UserDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/mappers/UserDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/mappers/UserDTOMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/security/WebSecurityConfigurerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/security/WebSecurityConfigurerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/controller/ApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/controller/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/controller/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/dto/ResponseNewUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/dto/ResponseNewUserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/dto/UserInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/dto/UserInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/error/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/antifraud/web/error/UserNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Anti-Fraud System/task/src/generated/antifraud/mappers/UserDTOMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Anti-Fraud System/task/src/generated/antifraud/mappers/UserDTOMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/course-remote-info.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,15 +71,11 @@
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
-        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
@@ -101,7 +86,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectId" id="2AstB1hYdlUvmFtlUvMFzBxDUoS" />
+  <component name="ProjectId" id="2AvRkYE8NBjvFQOq9TBGV6y1nX2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -109,8 +94,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "settings.editor.selected.configurable": "inlay.hints",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "show.inlinked.gradle.project.popup": "false"
   }
 }]]></component>
@@ -145,11 +131,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1b6821d8-8406-4c67-8ce5-071a35975a24" name="Changes" comment="" />
-      <created>1655809982232</created>
+      <changelist id="ac31c355-9db1-4b32-bd0f-c9659d992628" name="Changes" comment="" />
+      <created>1655888215975</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1655809982232</updated>
+      <updated>1655888215975</updated>
     </task>
     <servers />
   </component>

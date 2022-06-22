@@ -7,6 +7,7 @@ import antifraud.web.dto.UserDto;
 import antifraud.web.error.UserExistException;
 import antifraud.web.error.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +15,13 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    UserDTOMapper userDTOMapper;
+    private UserDTOMapper userDTOMapper;
+
+    @Autowired
+    PasswordEncoder encoder;
 
     public User registerNewUser(UserDto userDto){
         if (userExist(userDto.getUsername())){
@@ -25,6 +29,7 @@ public class UserService {
         }
 
         User user = userDTOMapper.toUser(userDto);
+        user.setPassword(encoder.encode(userDto.getPassword()));
         userRepository.save(user);
         return user;
     }

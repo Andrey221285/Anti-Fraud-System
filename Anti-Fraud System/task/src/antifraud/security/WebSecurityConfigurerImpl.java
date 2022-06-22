@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -15,12 +16,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
     @Autowired
     RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .userDetailsService(userDetailsService) // user store 1
-//                .passwordEncoder(getEncoder());
+        auth
+            .userDetailsService(userDetailsService) // user store 1
+            .passwordEncoder(getEncoder());
 
 //        auth
 //                .inMemoryAuthentication() // user store 2
@@ -37,7 +40,7 @@ public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // manage access
                 .mvcMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
                 .mvcMatchers("/actuator/shutdown").permitAll() // needs to run test
-                .anyRequest().authenticated()
+
                 // other matchers
                 .and()
                 .sessionManagement()
