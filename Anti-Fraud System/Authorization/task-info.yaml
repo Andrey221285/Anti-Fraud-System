@@ -23,7 +23,6 @@ files:
         id 'org.springframework.boot' version '2.3.1.RELEASE'
         id 'io.spring.dependency-management' version '1.0.9.RELEASE'
         id "io.freefair.lombok" version "6.0.0-m2"
-        id 'net.ltgt.apt-idea' version '0.21'
     }
 
 
@@ -50,7 +49,7 @@ files:
 - name: src/resources/application.properties
   visible: true
   text: |-
-    server.port=28852
+    server.port=8080
     server.error.include-message=always
     management.endpoints.web.exposure.include=*
     management.endpoint.shutdown.enabled=true
@@ -161,87 +160,6 @@ files:
 
     }
   learner_created: false
-- name: src/generated/antifraud/mappers/UserDTOMapperImpl.java
-  visible: true
-  text: |
-    package antifraud.mappers;
-
-    import antifraud.persistence.model.User;
-    import antifraud.web.dto.ResponseNewUserDto;
-    import antifraud.web.dto.UserDto;
-    import antifraud.web.dto.UserInfoDto;
-    import java.util.ArrayList;
-    import java.util.List;
-    import javax.annotation.processing.Generated;
-    import org.springframework.stereotype.Component;
-
-    @Generated(
-        value = "org.mapstruct.ap.MappingProcessor",
-        date = "2022-06-21T18:42:28+0700",
-        comments = "version: 1.5.1.Final, compiler: javac, environment: Java 18.0.1.1 (Oracle Corporation)"
-    )
-    @Component
-    public class UserDTOMapperImpl implements UserDTOMapper {
-
-        @Override
-        public User toUser(UserDto userDto) {
-            if ( userDto == null ) {
-                return null;
-            }
-
-            User user = new User();
-
-            user.setUserName( userDto.getUsername() );
-            user.setName( userDto.getName() );
-            user.setPassword( userDto.getPassword() );
-
-            return user;
-        }
-
-        @Override
-        public ResponseNewUserDto toResponseUserDto(User User) {
-            if ( User == null ) {
-                return null;
-            }
-
-            ResponseNewUserDto responseNewUserDto = new ResponseNewUserDto();
-
-            responseNewUserDto.setUsername( User.getUserName() );
-            responseNewUserDto.setId( User.getId() );
-            responseNewUserDto.setName( User.getName() );
-
-            return responseNewUserDto;
-        }
-
-        @Override
-        public UserInfoDto toUserInfDto(User user) {
-            if ( user == null ) {
-                return null;
-            }
-
-            UserInfoDto userInfoDto = new UserInfoDto();
-
-            userInfoDto.setUsername( user.getUserName() );
-            userInfoDto.setName( user.getName() );
-
-            return userInfoDto;
-        }
-
-        @Override
-        public List<UserInfoDto> toUserInfos(List<User> users) {
-            if ( users == null ) {
-                return null;
-            }
-
-            List<UserInfoDto> list = new ArrayList<UserInfoDto>( users.size() );
-            for ( User user : users ) {
-                list.add( toUserInfDto( user ) );
-            }
-
-            return list;
-        }
-    }
-  learner_created: false
 - name: src/antifraud/security/RestAuthenticationEntryPoint.java
   visible: true
   text: |
@@ -263,6 +181,37 @@ files:
         public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
         }
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/ResponseNewUserDto.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class ResponseNewUserDto {
+        private Long id;
+        private String name;
+        private String username;
+    }
+  learner_created: false
+- name: src/antifraud/web/error/UserNotFoundException.java
+  visible: true
+  text: |
+    package antifraud.web.error;
+
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "User not found!")
+    public class UserNotFoundException extends RuntimeException {
     }
   learner_created: false
 - name: src/antifraud/web/controller/service/TransactionService.java
@@ -335,6 +284,37 @@ files:
         private String password;
     }
   learner_created: false
+- name: src/antifraud/security/UserDetailsServiceImpl.java
+  visible: true
+  text: |
+    package antifraud.security;
+
+    import antifraud.persistence.dao.UserRepository;
+    import antifraud.persistence.model.User;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.security.core.userdetails.UserDetails;
+    import org.springframework.security.core.userdetails.UserDetailsService;
+    import org.springframework.security.core.userdetails.UsernameNotFoundException;
+    import org.springframework.stereotype.Service;
+
+    @Service
+    public class UserDetailsServiceImpl implements UserDetailsService {
+        @Autowired
+        UserRepository userRepository;
+
+
+        @Override
+        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            User user = userRepository.findByUserNameIgnoreCase(username);
+            if (user == null){
+                throw new UsernameNotFoundException("Not found: " + username);
+            }
+
+
+            return new UserDetailsImpl(user);
+        }
+    }
+  learner_created: false
 - name: src/antifraud/security/WebSecurityConfigurerImpl.java
   visible: true
   text: |
@@ -348,6 +328,7 @@ files:
     import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
     import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
     import org.springframework.security.config.http.SessionCreationPolicy;
+    import org.springframework.security.core.userdetails.UserDetailsService;
     import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
     import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -355,12 +336,14 @@ files:
     public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
         @Autowired
         RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+        @Autowired
+        UserDetailsService userDetailsService;
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    //        auth
-    //                .userDetailsService(userDetailsService) // user store 1
-    //                .passwordEncoder(getEncoder());
+            auth
+                .userDetailsService(userDetailsService) // user store 1
+                .passwordEncoder(getEncoder());
 
     //        auth
     //                .inMemoryAuthentication() // user store 2
@@ -377,7 +360,7 @@ files:
                     .authorizeRequests() // manage access
                     .mvcMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
                     .mvcMatchers("/actuator/shutdown").permitAll() // needs to run test
-                    .anyRequest().authenticated()
+
                     // other matchers
                     .and()
                     .sessionManagement()
@@ -390,6 +373,61 @@ files:
             return new BCryptPasswordEncoder(13);
         }
 
+    }
+  learner_created: false
+- name: src/antifraud/security/UserDetailsImpl.java
+  visible: true
+  text: |
+    package antifraud.security;
+
+    import antifraud.persistence.model.User;
+    import org.springframework.security.core.GrantedAuthority;
+    import org.springframework.security.core.userdetails.UserDetails;
+
+    import java.util.Collection;
+
+
+    public class UserDetailsImpl implements UserDetails {
+        private User user;
+
+        public UserDetailsImpl(User user) {
+            this.user = user;
+        }
+
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+            return null;
+        }
+
+        @Override
+        public String getPassword() {
+            return user.getPassword();
+        }
+
+        @Override
+        public String getUsername() {
+            return user.getUserName();
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+            return true;
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+            return true;
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+            return true;
+        }
+
+        @Override
+        public boolean isEnabled() {
+            return true;
+        }
     }
   learner_created: false
 - name: src/antifraud/persistence/dao/UserRepository.java
@@ -456,7 +494,6 @@ files:
     import antifraud.persistence.model.User;
     import antifraud.web.dto.ResponseNewUserDto;
     import antifraud.web.dto.UserDto;
-    import antifraud.web.dto.UserInfoDto;
     import org.mapstruct.Mapper;
     import org.mapstruct.Mapping;
 
@@ -471,10 +508,8 @@ files:
         @Mapping(target="username", source="userName")
         ResponseNewUserDto toResponseUserDto (User User);
 
-        @Mapping(target="username", source="userName")
-        UserInfoDto toUserInfDto (User user);
 
-        List<UserInfoDto> toUserInfos(List<User> users);
+        List<ResponseNewUserDto> toUserInfos(List<User> users);
 
     }
   learner_created: false
@@ -490,6 +525,7 @@ files:
     import antifraud.web.error.UserExistException;
     import antifraud.web.error.UserNotFoundException;
     import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.security.crypto.password.PasswordEncoder;
     import org.springframework.stereotype.Service;
 
     import java.util.List;
@@ -497,10 +533,13 @@ files:
     @Service
     public class UserService {
         @Autowired
-        UserRepository userRepository;
+        private UserRepository userRepository;
 
         @Autowired
-        UserDTOMapper userDTOMapper;
+        private UserDTOMapper userDTOMapper;
+
+        @Autowired
+        PasswordEncoder encoder;
 
         public User registerNewUser(UserDto userDto){
             if (userExist(userDto.getUsername())){
@@ -508,6 +547,7 @@ files:
             }
 
             User user = userDTOMapper.toUser(userDto);
+            user.setPassword(encoder.encode(userDto.getPassword()));
             userRepository.save(user);
             return user;
         }
@@ -532,59 +572,6 @@ files:
             }
 
         }
-    }
-  learner_created: false
-- name: src/antifraud/web/dto/ResponseNewUserDto.java
-  visible: true
-  text: |
-    package antifraud.web.dto;
-
-    import lombok.AllArgsConstructor;
-    import lombok.Data;
-    import lombok.NoArgsConstructor;
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class ResponseNewUserDto {
-        private Long id;
-        private String name;
-        private String username;
-    }
-  learner_created: false
-- name: src/antifraud/web/dto/UserInfoDto.java
-  visible: true
-  text: |
-    package antifraud.web.dto;
-
-
-    import lombok.AllArgsConstructor;
-    import lombok.Data;
-    import lombok.NoArgsConstructor;
-
-    import javax.validation.constraints.NotBlank;
-    import javax.validation.constraints.NotNull;
-
-    // TODO: 21.06.2022 need remake
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class UserInfoDto {
-        private String name;
-        private String username;
-    }
-  learner_created: false
-- name: src/antifraud/web/error/UserNotFoundException.java
-  visible: true
-  text: |
-    package antifraud.web.error;
-
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "User not found!")
-    public class UserNotFoundException extends RuntimeException {
     }
   learner_created: false
 - name: test/AntiFraudTest.java
@@ -1243,6 +1230,6 @@ files:
         };
     }
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/18069#comment
+feedback_link: https://hyperskill.org/projects/232/stages/1163/implement#comment
 status: Unchecked
 record: -1

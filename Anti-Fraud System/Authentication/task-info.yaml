@@ -542,9 +542,6 @@ files:
         };
     }
   learner_created: false
-- name: src/generated/antifraud/mappers/UserDTOMapperImpl.java
-  visible: true
-  learner_created: true
 - name: src/antifraud/security/RestAuthenticationEntryPoint.java
   visible: true
   learner_created: true
@@ -563,7 +560,13 @@ files:
 - name: src/antifraud/web/dto/UserDto.java
   visible: true
   learner_created: true
+- name: src/antifraud/security/UserDetailsServiceImpl.java
+  visible: true
+  learner_created: true
 - name: src/antifraud/security/WebSecurityConfigurerImpl.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/security/UserDetailsImpl.java
   visible: true
   learner_created: true
 - name: src/antifraud/persistence/dao/UserRepository.java
@@ -581,15 +584,9 @@ files:
 - name: src/antifraud/web/controller/service/UserService.java
   visible: true
   learner_created: true
-- name: src/antifraud/security/UserDetailsServiceImpl.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/security/UserDetailsImpl.java
-  visible: true
-  learner_created: true
-feedback_link: https://hyperskill.org/learn/step/18068#comment
-status: Failed
+feedback_link: https://hyperskill.org/projects/232/stages/1162/implement#comment
+status: Solved
 feedback:
-  message: Failed to launch checking
-  time: Wed, 22 Jun 2022 11:02:14 UTC
+  message: Congratulations!
+  time: Wed, 22 Jun 2022 11:51:16 UTC
 record: 1
