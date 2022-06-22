@@ -7,11 +7,12 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="#JAVA_INTERNAL" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Anti-Fraud System/task" />
+            <option value="$PROJECT_DIR$/Anti-Fraud System/task/out" />
+            <option value="$PROJECT_DIR$/Anti-Fraud System/task/src" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
