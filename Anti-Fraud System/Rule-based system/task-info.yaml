@@ -80,9 +80,7 @@ files:
     import antifraud.persistence.model.User;
     import antifraud.web.controller.service.TransactionService;
     import antifraud.web.controller.service.UserService;
-    import antifraud.web.dto.ResponseNewUserDto;
-    import antifraud.web.dto.TransactionDto;
-    import antifraud.web.dto.UserDto;
+    import antifraud.web.dto.*;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.HttpStatus;
     import org.springframework.http.ResponseEntity;
@@ -131,6 +129,26 @@ files:
             map.put("status", "Deleted successfully!");
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
+
+        @PutMapping("/api/auth/role")
+        public ResponseEntity<?> changeRole(@Valid @RequestBody ChangeRoleDto changeRoleDto){
+
+            ResponseNewUserDto responseNewUserDto = userDTOMapper.toResponseUserDto(userService.changeRole(changeRoleDto));;
+            return new ResponseEntity<>(responseNewUserDto, HttpStatus.OK);
+
+        }
+
+        @PutMapping("/api/auth/access")
+        public ResponseEntity<?> changeAccess (@Valid @RequestBody ChangeAccessto changeAccessto){
+
+            User user = userService.changeAccess(changeAccessto);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("status", String.format("User %s %s!", user.getUserName(), user.isLocked() ? "locked" : "unlocked"));
+            return new ResponseEntity<>(map, HttpStatus.OK);
+
+        }
+
+
 
 
 
@@ -188,6 +206,7 @@ files:
   text: |
     package antifraud.web.dto;
 
+    import antifraud.web.controller.service.UserService;
     import lombok.AllArgsConstructor;
     import lombok.Data;
     import lombok.NoArgsConstructor;
@@ -199,6 +218,7 @@ files:
         private Long id;
         private String name;
         private String username;
+        private UserService.ROLES role;
     }
   learner_created: false
 - name: src/antifraud/web/error/UserNotFoundException.java
@@ -320,6 +340,7 @@ files:
   text: |
     package antifraud.security;
 
+    import antifraud.web.controller.service.UserService;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.context.annotation.Bean;
     import org.springframework.http.HttpMethod;
@@ -359,6 +380,10 @@ files:
                     .and()
                     .authorizeRequests() // manage access
                     .mvcMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
+                    .mvcMatchers(HttpMethod.DELETE, "/api/auth/user").hasRole(UserService.ROLES.ADMINISTRATOR.name())
+                    .mvcMatchers(HttpMethod.PUT, "/api/auth/role").hasRole(UserService.ROLES.ADMINISTRATOR.name())
+                    .mvcMatchers(HttpMethod.PUT, "/api/auth/access").hasRole(UserService.ROLES.ADMINISTRATOR.name())
+                    .mvcMatchers(HttpMethod.GET, "/api/auth/list").hasAnyRole(UserService.ROLES.ADMINISTRATOR.name(),UserService.ROLES.SUPPORT.name() )
                     .mvcMatchers("/actuator/shutdown").permitAll() // needs to run test
 
                     // other matchers
@@ -382,21 +407,27 @@ files:
 
     import antifraud.persistence.model.User;
     import org.springframework.security.core.GrantedAuthority;
+    import org.springframework.security.core.authority.SimpleGrantedAuthority;
     import org.springframework.security.core.userdetails.UserDetails;
 
+    import java.util.ArrayList;
     import java.util.Collection;
+    import java.util.List;
 
 
     public class UserDetailsImpl implements UserDetails {
         private User user;
+        private final List<GrantedAuthority> rolesAndAuthorities;
 
         public UserDetailsImpl(User user) {
             this.user = user;
+            rolesAndAuthorities = new ArrayList<>();
+            rolesAndAuthorities.add(new SimpleGrantedAuthority("ROLE_"+user.getRole().name()));
         }
 
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
-            return null;
+            return rolesAndAuthorities;
         }
 
         @Override
@@ -416,7 +447,7 @@ files:
 
         @Override
         public boolean isAccountNonLocked() {
-            return true;
+            return !user.isLocked();
         }
 
         @Override
@@ -458,6 +489,7 @@ files:
   text: |
     package antifraud.persistence.model;
 
+    import antifraud.web.controller.service.UserService;
     import lombok.AllArgsConstructor;
     import lombok.Data;
     import lombok.NoArgsConstructor;
@@ -484,6 +516,12 @@ files:
 
         @Column(name = "password")
         private String password;
+
+        @Column
+        private UserService.ROLES role;
+
+        @Column
+        private boolean isLocked;
     }
   learner_created: false
 - name: src/antifraud/mappers/UserDTOMapper.java
@@ -521,12 +559,16 @@ files:
     import antifraud.mappers.UserDTOMapper;
     import antifraud.persistence.dao.UserRepository;
     import antifraud.persistence.model.User;
+    import antifraud.web.dto.ChangeAccessto;
+    import antifraud.web.dto.ChangeRoleDto;
     import antifraud.web.dto.UserDto;
     import antifraud.web.error.UserExistException;
     import antifraud.web.error.UserNotFoundException;
     import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
     import org.springframework.security.crypto.password.PasswordEncoder;
     import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
 
     import java.util.List;
 
@@ -548,6 +590,14 @@ files:
 
             User user = userDTOMapper.toUser(userDto);
             user.setPassword(encoder.encode(userDto.getPassword()));
+
+            if (userRepository.count() == 0){
+                user.setRole(ROLES.ADMINISTRATOR);
+            } else {
+                user.setRole(ROLES.MERCHANT);
+                user.setLocked(true);
+            }
+
             userRepository.save(user);
             return user;
         }
@@ -572,6 +622,107 @@ files:
             }
 
         }
+
+        public User changeRole(ChangeRoleDto changeRoleDto) {
+            if (changeRoleDto.getRole() == ROLES.ADMINISTRATOR){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+            User user = userRepository.findByUserNameIgnoreCase(changeRoleDto.getUsername());
+            if (user == null){
+                throw new UserNotFoundException();
+            }
+            if (user.getRole() == ROLES.ADMINISTRATOR){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+            if (changeRoleDto.getRole() != ROLES.MERCHANT && changeRoleDto.getRole() != ROLES.SUPPORT){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+
+            if (changeRoleDto.getRole() == user.getRole()){
+                throw new ResponseStatusException(HttpStatus.CONFLICT);
+            }
+
+            user.setRole(changeRoleDto.getRole());
+            userRepository.save(user);
+            return user;
+
+        }
+
+        public User changeAccess(ChangeAccessto changeAccessto) {
+            User user = userRepository.findByUserNameIgnoreCase(changeAccessto.getUsername());
+
+            if (user == null){
+                throw new UserNotFoundException();
+            }
+            if (user.getRole()==ROLES.ADMINISTRATOR){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+
+            if (changeAccessto.getOperation().equals("LOCK")){
+                user.setLocked(true);
+            } else if (changeAccessto.getOperation().equals("UNLOCK")){
+                user.setLocked(false);
+            }
+
+            userRepository.save(user);
+            return user;
+
+        }
+
+
+        public enum ROLES {
+            ADMINISTRATOR,
+            MERCHANT,
+            SUPPORT
+        }
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/ChangeRoleDto.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+    import antifraud.web.controller.service.UserService;
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    import javax.validation.constraints.NotBlank;
+    import javax.validation.constraints.NotNull;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class ChangeRoleDto {
+        @NotBlank
+        private String username;
+
+        @NotNull
+        private UserService.ROLES role;
+
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/ChangeAccessto.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    import javax.validation.constraints.NotBlank;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class ChangeAccessto {
+        @NotBlank
+        private String username;
+        @NotBlank
+        private String operation;
+
     }
   learner_created: false
 - name: test/AntiFraudTest.java
@@ -1826,6 +1977,6 @@ files:
         };
     }
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/18071#comment
+feedback_link: https://hyperskill.org/projects/232/stages/1165/implement#comment
 status: Unchecked
 record: -1

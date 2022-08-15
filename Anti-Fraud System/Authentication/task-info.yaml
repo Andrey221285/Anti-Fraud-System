@@ -590,6 +590,6 @@ files:
 - name: src/antifraud/web/controller/service/UserService.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/learn/step/18068#comment
+feedback_link: https://hyperskill.org/projects/232/stages/1162/implement#comment
 status: Solved
 record: 1

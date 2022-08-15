@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -14,7 +15,7 @@ public class ChangeRoleDto {
     @NotBlank
     private String username;
 
-    @NotBlank
+    @NotNull
     private UserService.ROLES role;
 
 }

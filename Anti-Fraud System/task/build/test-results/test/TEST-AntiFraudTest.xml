@@ -1,91 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AntiFraudTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-08-15T10:46:58" hostname="WIN-V2VIIKH07VR" time="4.883">
+<testsuite name="AntiFraudTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-08-15T13:01:18" hostname="WIN-V2VIIKH07VR" time="29.501">
   <properties/>
-  <testcase name="start" classname="AntiFraudTest" time="4.883">
-    <failure message="java.lang.AssertionError: Wrong answer in test #3&#10;&#10;The JSON object should contain a key &quot;role&quot;&#10;&#10;Full JSON:&#10;{&#10;  &quot;id&quot;: 1,&#10;  &quot;name&quot;: &quot;administrator&quot;,&#10;  &quot;username&quot;: &quot;administrator&quot;&#10;}&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;.   ____          _            __ _ _&#10; /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \&#10;( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \&#10; \\/  ___)| |_)| | | | | || (_| |  ) ) ) )&#10;  '  |____| .__|_| |_|_| |_\__, | / / / /&#10; =========|_|==============|___/=/_/_/_/&#10; :: Spring Boot ::        (v2.3.1.RELEASE)&#10;&#10;2022-08-15 17:46:59.362  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 7580 (started by user in C:\git\Anti-Fraud System1\Anti-Fraud System\task)&#10;2022-08-15 17:46:59.362  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default&#10;2022-08-15 17:47:00.214  INFO 7580 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.&#10;2022-08-15 17:47:00.261  INFO 7580 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51ms. Found 1 JPA repository interfaces.&#10;2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)&#10;2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]&#10;2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]&#10;2022-08-15 17:47:00.855  INFO 7580 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext&#10;2022-08-15 17:47:00.855  INFO 7580 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1458 ms&#10;2022-08-15 17:47:00.996  INFO 7580 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...&#10;2022-08-15 17:47:01.183  INFO 7580 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.&#10;2022-08-15 17:47:01.183  INFO 7580 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'&#10;2022-08-15 17:47:01.307  INFO 7580 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'&#10;2022-08-15 17:47:01.346  INFO 7580 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]&#10;2022-08-15 17:47:01.377  WARN 7580 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning&#10;2022-08-15 17:47:01.409  INFO 7580 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final&#10;2022-08-15 17:47:01.565  INFO 7580 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}&#10;2022-08-15 17:47:01.658  INFO 7580 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect&#10;2022-08-15 17:47:01.791  INFO 7580 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'&#10;2022-08-15 17:47:01.833  INFO 7580 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e2d8623, org.springframework.security.web.context.SecurityContextPersistenceFilter@37bda983, org.springframework.security.web.header.HeaderWriterFilter@8ac512e, org.springframework.security.web.authentication.logout.LogoutFilter@1fc1c7e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@df7d1d4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1201e064, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@660296d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@72715e61, org.springframework.security.web.session.SessionManagementFilter@606b53a3, org.springframework.security.web.access.ExceptionTranslationFilter@5fa0141f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f7336b2]&#10;Hibernate: create table user_account (id bigint not null, name varchar(255), password varchar(255), user_name varchar(255), primary key (id))&#10;Hibernate: create sequence hibernate_sequence start with 1 increment by 1&#10;2022-08-15 17:47:02.244  INFO 7580 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]&#10;2022-08-15 17:47:02.259  INFO 7580 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'&#10;2022-08-15 17:47:02.346  INFO 7580 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''&#10;2022-08-15 17:47:02.346  INFO 7580 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…&#10;2022-08-15 17:47:02.565  INFO 7580 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!&#10;2022-08-15 17:47:02.565  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 3.543 seconds (JVM running for 4.13)&#10;Test case&#10;Testing api: '/api/auth/user'&#10;request: '{&#10;   &quot;name&quot;: &quot;John Doe 1&quot;,&#10;   &quot;password&quot;: &quot;oa3VvqnLxW&quot;&#10;}'&#10;Expectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'&#10;-----&#10;2022-08-15 17:47:02.793  INFO 7580 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'&#10;2022-08-15 17:47:02.793  INFO 7580 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'&#10;2022-08-15 17:47:02.808  INFO 7580 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms&#10;2022-08-15 17:47:02.949  WARN 7580 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotBlank.userDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be blank]] [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotNull.userDto.username,NotNull.username,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be null]] ]&#10;Test case&#10;Testing api: '/api/auth/user'&#10;request: '{&#10;   &quot;name&quot;: &quot;John Doe 2&quot;,&#10;   &quot;username&quot;: &quot;johndoe1&quot;&#10;}'&#10;Expectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'&#10;-----&#10;2022-08-15 17:47:02.986  WARN 7580 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotNull.userDto.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be null]] [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotBlank.userDto.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]&#10;Test case&#10;Testing api: '/api/auth/user'&#10;request: '{&#10;   &quot;name&quot;: &quot;John Doe 1&quot;,&#10;   &quot;username&quot;: &quot;johndoe1&quot;,&#10;   &quot;password&quot;: &quot;oMoa3VvqnLxW&quot;&#10;}'&#10;Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.name as name2_0_, user0_.password as password3_0_, user0_.user_name as user_nam4_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: call next value for hibernate_sequence&#10;Hibernate: insert into user_account (name, password, user_name, id) values (?, ?, ?, ?)" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #3
+  <testcase name="start" classname="AntiFraudTest" time="29.501">
+    <failure message="java.lang.AssertionError: Wrong answer in test #54&#10;&#10;DELETE /api/auth/user/johndoe1 should respond with status code 401, responded: 404&#10;Response body:&#10;{&#10;  &quot;timestamp&quot; : &quot;2022-08-15T13:01:48.040+00:00&quot;,&#10;  &quot;status&quot; : 404,&#10;  &quot;error&quot; : &quot;Not Found&quot;,&#10;  &quot;message&quot; : &quot;User not found!&quot;,&#10;  &quot;path&quot; : &quot;/api/auth/user/johndoe1&quot;&#10;}&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;[last 250 lines of output are shown, 186 skipped]&#10;Testing api: '/api/auth/user'&#10;request: '{&#10;   &quot;name&quot;: &quot;John Doe 2&quot;,&#10;   &quot;username&quot;: &quot;johndoe2&quot;,&#10;   &quot;password&quot;: &quot;oMoa5VvqnLxW&quot;&#10;}'&#10;Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select count(*) as col_0_0_ from user_account user0_&#10;Hibernate: call next value for hibernate_sequence&#10;Hibernate: insert into user_account (is_locked, name, password, role, user_name, id) values (?, ?, ?, ?, ?, ?)&#10;Test case&#10;Testing api: '/api/auth/list'&#10;Expectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = 199'&#10;Expectations: 'Result validating of Transaction must be 'ALLOWED''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = 200'&#10;Expectations: 'Result validating of Transaction must be 'ALLOWED''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = 201'&#10;Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = 1499'&#10;Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = 1500'&#10;Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = 1501'&#10;Expectations: 'Result validating of Transaction must be 'PROHIBITED''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = 2000'&#10;Expectations: 'Result validating of Transaction must be 'PROHIBITED''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = -1'&#10;Expectations: 'Response status must be 'Bad request''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;2022-08-15 20:01:35.177  WARN 8720 --- [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [-1]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = 0'&#10;Expectations: 'Response status must be 'Bad request''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;2022-08-15 20:01:35.686  WARN 8720 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [0]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = null'&#10;Expectations: 'Response status must be 'Bad request''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;2022-08-15 20:01:36.201  WARN 8720 --- [nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = &quot;&quot;'&#10;Expectations: 'Response status must be 'Bad request''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;2022-08-15 20:01:36.713  WARN 8720 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'amount = &quot; &quot;'&#10;Expectations: 'Response status must be 'Bad request''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;2022-08-15 20:01:37.222  WARN 8720 --- [io-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;request: 'empty body'&#10;Expectations: 'Response status must be 'Bad request''&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;2022-08-15 20:01:37.728  WARN 8720 --- [nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]&#10;Test case&#10;Testing api: '/api/auth/user'&#10;request: '/api/auth/user/somebody'&#10;Expectations: 'If a user is not found, respond with HTTP Not Found status (404).'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/auth/user'&#10;request: '/api/auth/user/johndoe1'&#10;Expectations: 'The endpoint must delete the user and respond with HTTP OK status (200)'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: delete from user_account where id=?&#10;Test case&#10;Testing api: '/api/auth/list'&#10;Expectations: 'User 'johndoe1' must be delete'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_&#10;Test case&#10;Testing api: '/api/auth/role'&#10;Expectations: 'If a user is not found, endpoint must respond with the HTTP Not Found status (404).'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/auth/role'&#10;Expectations: 'If a role is not found, endpoint must respond with the HTTP Bad Request status (400).'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;2022-08-15 20:01:40.307  WARN 8720 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String &quot;USER&quot;: not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String &quot;USER&quot;: not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]&#10; at [Source: (PushbackInputStream); line: 1, column: 31] (through reference chain: antifraud.web.dto.ChangeRoleDto[&quot;role&quot;])]&#10;Test case&#10;Testing api: '/api/auth/role'&#10;Expectations: 'If a role is ADMINISTRATOR, endpoint must respond with the HTTP Bad Request status (400).'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/auth/role'&#10;Expectations: 'If a role successfully changed, respond with the HTTP OK status (200)'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?&#10;Test case&#10;Testing api: '/api/auth/role'&#10;Expectations: 'If a role already assigned to a user, endpoint must respond with the HTTP Conflict status (409).'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/auth/access'&#10;Expectations: 'A user johndoe2 must be UNLOCKED'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?&#10;Test case&#10;Testing api: '/api/auth/list'&#10;Expectations: 'Role for user 'johndoe2' must be changed to SUPPORT'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;Expectations: 'Role MERCHANT must be removed from user johndoe2!'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/auth/user'&#10;request: '{&#10;   &quot;name&quot;: &quot;John Doe 3&quot;,&#10;   &quot;username&quot;: &quot;johndoe3&quot;,&#10;   &quot;password&quot;: &quot;oMoa6VvqnLxW&quot;&#10;}'&#10;Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select count(*) as col_0_0_ from user_account user0_&#10;Hibernate: call next value for hibernate_sequence&#10;Hibernate: insert into user_account (is_locked, name, password, role, user_name, id) values (?, ?, ?, ?, ?, ?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;Expectations: 'MERCHANT user after registration must be LOCKED'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/auth/access'&#10;Expectations: 'A user johndoe3 must be UNLOCKED'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;Expectations: 'A user johndoe3 must be UNLOCKED'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/auth/access'&#10;Expectations: 'A user johndoe3 must be LOCKED'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;Expectations: 'A user johndoe3 must be LOCKED'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/auth/access'&#10;Expectations: 'A user johndoe3 must be UNLOCKED'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;Expectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction/'&#10;Expectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction/'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;Expectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction/'&#10;Expectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction/'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)&#10;Test case&#10;Testing api: '/api/antifraud/transaction'&#10;Expectations: 'A user with role ANONYMOUS must not have access to /api/antifraud/transaction'&#10;-----&#10;Test case&#10;Testing api: '/api/auth/user'&#10;Expectations: 'A user with role ANONYMOUS must not have access to DELETE /api/auth/user'&#10;-----&#10;Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #54
 
-The JSON object should contain a key &quot;role&quot;
-
-Full JSON:
+DELETE /api/auth/user/johndoe1 should respond with status code 401, responded: 404
+Response body:
 {
-  &quot;id&quot;: 1,
-  &quot;name&quot;: &quot;administrator&quot;,
-  &quot;username&quot;: &quot;administrator&quot;
+  &quot;timestamp&quot; : &quot;2022-08-15T13:01:48.040+00:00&quot;,
+  &quot;status&quot; : 404,
+  &quot;error&quot; : &quot;Not Found&quot;,
+  &quot;message&quot; : &quot;User not found!&quot;,
+  &quot;path&quot; : &quot;/api/auth/user/johndoe1&quot;
 }
 
 Please find below the output of your program during this failed test.
 
 ---
 
-.   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.3.1.RELEASE)
-
-2022-08-15 17:46:59.362  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 7580 (started by user in C:\git\Anti-Fraud System1\Anti-Fraud System\task)
-2022-08-15 17:46:59.362  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
-2022-08-15 17:47:00.214  INFO 7580 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2022-08-15 17:47:00.261  INFO 7580 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51ms. Found 1 JPA repository interfaces.
-2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-2022-08-15 17:47:00.855  INFO 7580 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-08-15 17:47:00.855  INFO 7580 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1458 ms
-2022-08-15 17:47:00.996  INFO 7580 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-08-15 17:47:01.183  INFO 7580 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-08-15 17:47:01.183  INFO 7580 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
-2022-08-15 17:47:01.307  INFO 7580 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-08-15 17:47:01.346  INFO 7580 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-08-15 17:47:01.377  WARN 7580 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-08-15 17:47:01.409  INFO 7580 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
-2022-08-15 17:47:01.565  INFO 7580 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2022-08-15 17:47:01.658  INFO 7580 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2022-08-15 17:47:01.791  INFO 7580 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2022-08-15 17:47:01.833  INFO 7580 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e2d8623, org.springframework.security.web.context.SecurityContextPersistenceFilter@37bda983, org.springframework.security.web.header.HeaderWriterFilter@8ac512e, org.springframework.security.web.authentication.logout.LogoutFilter@1fc1c7e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@df7d1d4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1201e064, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@660296d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@72715e61, org.springframework.security.web.session.SessionManagementFilter@606b53a3, org.springframework.security.web.access.ExceptionTranslationFilter@5fa0141f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f7336b2]
-Hibernate: create table user_account (id bigint not null, name varchar(255), password varchar(255), user_name varchar(255), primary key (id))
-Hibernate: create sequence hibernate_sequence start with 1 increment by 1
-2022-08-15 17:47:02.244  INFO 7580 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-08-15 17:47:02.259  INFO 7580 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-08-15 17:47:02.346  INFO 7580 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-08-15 17:47:02.346  INFO 7580 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
-2022-08-15 17:47:02.565  INFO 7580 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2022-08-15 17:47:02.565  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 3.543 seconds (JVM running for 4.13)
-Test case
-Testing api: '/api/auth/user'
-request: '{
-   &quot;name&quot;: &quot;John Doe 1&quot;,
-   &quot;password&quot;: &quot;oa3VvqnLxW&quot;
-}'
-Expectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
------
-2022-08-15 17:47:02.793  INFO 7580 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-08-15 17:47:02.793  INFO 7580 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-08-15 17:47:02.808  INFO 7580 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
-2022-08-15 17:47:02.949  WARN 7580 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotBlank.userDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be blank]] [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotNull.userDto.username,NotNull.username,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be null]] ]
-Test case
+[last 250 lines of output are shown, 186 skipped]
 Testing api: '/api/auth/user'
 request: '{
    &quot;name&quot;: &quot;John Doe 2&quot;,
-   &quot;username&quot;: &quot;johndoe1&quot;
-}'
-Expectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
------
-2022-08-15 17:47:02.986  WARN 7580 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotNull.userDto.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be null]] [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotBlank.userDto.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
-Test case
-Testing api: '/api/auth/user'
-request: '{
-   &quot;name&quot;: &quot;John Doe 1&quot;,
-   &quot;username&quot;: &quot;johndoe1&quot;,
-   &quot;password&quot;: &quot;oMoa3VvqnLxW&quot;
+   &quot;username&quot;: &quot;johndoe2&quot;,
+   &quot;password&quot;: &quot;oMoa5VvqnLxW&quot;
 }'
 Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
 -----
-Hibernate: select user0_.id as id1_0_, user0_.name as name2_0_, user0_.password as password3_0_, user0_.user_name as user_nam4_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select count(*) as col_0_0_ from user_account user0_
 Hibernate: call next value for hibernate_sequence
-Hibernate: insert into user_account (name, password, user_name, id) values (?, ?, ?, ?)
+Hibernate: insert into user_account (is_locked, name, password, role, user_name, id) values (?, ?, ?, ?, ?, ?)
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 199'
+Expectations: 'Result validating of Transaction must be 'ALLOWED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 200'
+Expectations: 'Result validating of Transaction must be 'ALLOWED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 201'
+Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 1499'
+Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 1500'
+Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 1501'
+Expectations: 'Result validating of Transaction must be 'PROHIBITED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 2000'
+Expectations: 'Result validating of Transaction must be 'PROHIBITED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = -1'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:35.177  WARN 8720 --- [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [-1]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 0'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:35.686  WARN 8720 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [0]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = null'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:36.201  WARN 8720 --- [nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = &quot;&quot;'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:36.713  WARN 8720 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = &quot; &quot;'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:37.222  WARN 8720 --- [io-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'empty body'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:37.728  WARN 8720 --- [nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;?&gt; antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+Test case
+Testing api: '/api/auth/user'
+request: '/api/auth/user/somebody'
+Expectations: 'If a user is not found, respond with HTTP Not Found status (404).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/auth/user'
+request: '/api/auth/user/johndoe1'
+Expectations: 'The endpoint must delete the user and respond with HTTP OK status (200)'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: delete from user_account where id=?
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'User 'johndoe1' must be delete'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a user is not found, endpoint must respond with the HTTP Not Found status (404).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a role is not found, endpoint must respond with the HTTP Bad Request status (400).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:40.307  WARN 8720 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String &quot;USER&quot;: not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String &quot;USER&quot;: not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]
+ at [Source: (PushbackInputStream); line: 1, column: 31] (through reference chain: antifraud.web.dto.ChangeRoleDto[&quot;role&quot;])]
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a role is ADMINISTRATOR, endpoint must respond with the HTTP Bad Request status (400).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a role successfully changed, respond with the HTTP OK status (200)'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a role already assigned to a user, endpoint must respond with the HTTP Conflict status (409).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe2 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'Role for user 'johndoe2' must be changed to SUPPORT'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'Role MERCHANT must be removed from user johndoe2!'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   &quot;name&quot;: &quot;John Doe 3&quot;,
+   &quot;username&quot;: &quot;johndoe3&quot;,
+   &quot;password&quot;: &quot;oMoa6VvqnLxW&quot;
+}'
+Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select count(*) as col_0_0_ from user_account user0_
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into user_account (is_locked, name, password, role, user_name, id) values (?, ?, ?, ?, ?, ?)
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'MERCHANT user after registration must be LOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe3 must be LOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user johndoe3 must be LOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction/'
+Expectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction/'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction/'
+Expectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction/'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user with role ANONYMOUS must not have access to /api/antifraud/transaction'
+-----
+Test case
+Testing api: '/api/auth/user'
+Expectations: 'A user with role ANONYMOUS must not have access to DELETE /api/auth/user'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -145,34 +328,34 @@ Start test 1?[0m
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.3.1.RELEASE)
 
-2022-08-15 17:46:59.362  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 7580 (started by user in C:\git\Anti-Fraud System1\Anti-Fraud System\task)
-2022-08-15 17:46:59.362  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
-2022-08-15 17:47:00.214  INFO 7580 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2022-08-15 17:47:00.261  INFO 7580 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51ms. Found 1 JPA repository interfaces.
-2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-08-15 17:47:00.761  INFO 7580 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-2022-08-15 17:47:00.855  INFO 7580 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-08-15 17:47:00.855  INFO 7580 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1458 ms
-2022-08-15 17:47:00.996  INFO 7580 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-08-15 17:47:01.183  INFO 7580 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-08-15 17:47:01.183  INFO 7580 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
-2022-08-15 17:47:01.307  INFO 7580 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-08-15 17:47:01.346  INFO 7580 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-08-15 17:47:01.377  WARN 7580 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-08-15 17:47:01.409  INFO 7580 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
-2022-08-15 17:47:01.565  INFO 7580 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2022-08-15 17:47:01.658  INFO 7580 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2022-08-15 17:47:01.791  INFO 7580 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2022-08-15 17:47:01.833  INFO 7580 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e2d8623, org.springframework.security.web.context.SecurityContextPersistenceFilter@37bda983, org.springframework.security.web.header.HeaderWriterFilter@8ac512e, org.springframework.security.web.authentication.logout.LogoutFilter@1fc1c7e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@df7d1d4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1201e064, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@660296d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@72715e61, org.springframework.security.web.session.SessionManagementFilter@606b53a3, org.springframework.security.web.access.ExceptionTranslationFilter@5fa0141f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f7336b2]
-Hibernate: create table user_account (id bigint not null, name varchar(255), password varchar(255), user_name varchar(255), primary key (id))
+2022-08-15 20:01:18.974  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 8720 (started by user in C:\git\Anti-Fraud System4\Anti-Fraud System\task)
+2022-08-15 20:01:18.976  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+2022-08-15 20:01:19.852  INFO 8720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2022-08-15 20:01:19.908  INFO 8720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48ms. Found 1 JPA repository interfaces.
+2022-08-15 20:01:20.404  INFO 8720 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-08-15 20:01:20.412  INFO 8720 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-15 20:01:20.412  INFO 8720 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-08-15 20:01:20.488  INFO 8720 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-15 20:01:20.489  INFO 8720 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1477 ms
+2022-08-15 20:01:20.595  INFO 8720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-15 20:01:20.745  INFO 8720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-15 20:01:20.752  INFO 8720 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
+2022-08-15 20:01:20.862  INFO 8720 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-15 20:01:20.900  INFO 8720 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-15 20:01:20.933  WARN 8720 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-08-15 20:01:20.946  INFO 8720 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2022-08-15 20:01:21.085  INFO 8720 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-08-15 20:01:21.189  INFO 8720 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-08-15 20:01:21.322  INFO 8720 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-08-15 20:01:21.364  INFO 8720 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@416b1265, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d9de284, org.springframework.security.web.header.HeaderWriterFilter@37bda983, org.springframework.security.web.authentication.logout.LogoutFilter@df7d1d4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3d88ce0e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7540160e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@70f85235, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2830315f, org.springframework.security.web.session.SessionManagementFilter@75d97e18, org.springframework.security.web.access.ExceptionTranslationFilter@606b53a3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4a4b288a]
+Hibernate: create table user_account (id bigint not null, is_locked boolean, name varchar(255), password varchar(255), role integer, user_name varchar(255), primary key (id))
 Hibernate: create sequence hibernate_sequence start with 1 increment by 1
-2022-08-15 17:47:02.244  INFO 7580 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-08-15 17:47:02.259  INFO 7580 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-08-15 17:47:02.346  INFO 7580 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-08-15 17:47:02.346  INFO 7580 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
-2022-08-15 17:47:02.565  INFO 7580 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2022-08-15 17:47:02.565  INFO 7580 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 3.543 seconds (JVM running for 4.13)
+2022-08-15 20:01:21.842  INFO 8720 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-15 20:01:21.848  INFO 8720 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-08-15 20:01:21.945  INFO 8720 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-08-15 20:01:21.947  INFO 8720 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2022-08-15 20:01:22.153  INFO 8720 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2022-08-15 20:01:22.162  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 3.446 seconds (JVM running for 4.017)
 Test case
 Testing api: '/api/auth/user'
 request: '{
@@ -181,10 +364,10 @@ request: '{
 }'
 Expectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
 -----
-2022-08-15 17:47:02.793  INFO 7580 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-08-15 17:47:02.793  INFO 7580 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-08-15 17:47:02.808  INFO 7580 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
-2022-08-15 17:47:02.949  WARN 7580 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotBlank.userDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be blank]] [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotNull.userDto.username,NotNull.username,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be null]] ]
+2022-08-15 20:01:22.390  INFO 8720 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-15 20:01:22.391  INFO 8720 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-15 20:01:22.396  INFO 8720 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-08-15 20:01:22.533  WARN 8720 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotNull.userDto.username,NotNull.username,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be null]] [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotBlank.userDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be blank]] ]
 ?[1;31m
 Start test 2?[0m
 Test case
@@ -195,7 +378,7 @@ request: '{
 }'
 Expectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
 -----
-2022-08-15 17:47:02.986  WARN 7580 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotNull.userDto.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be null]] [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotBlank.userDto.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+2022-08-15 20:01:22.577  WARN 8720 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotBlank.userDto.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be blank]] [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotNull.userDto.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be null]] ]
 ?[1;31m
 Start test 3?[0m
 Test case
@@ -207,9 +390,477 @@ request: '{
 }'
 Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
 -----
-Hibernate: select user0_.id as id1_0_, user0_.name as name2_0_, user0_.password as password3_0_, user0_.user_name as user_nam4_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select count(*) as col_0_0_ from user_account user0_
 Hibernate: call next value for hibernate_sequence
-Hibernate: insert into user_account (name, password, user_name, id) values (?, ?, ?, ?)
+Hibernate: insert into user_account (is_locked, name, password, role, user_name, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 4?[0m
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+?[1;31m
+Start test 5?[0m
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 1",
+   "username": "johndoe1",
+   "password": "oMoa3VvqnLxW"
+}'
+Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select count(*) as col_0_0_ from user_account user0_
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into user_account (is_locked, name, password, role, user_name, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 6?[0m
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+?[1;31m
+Start test 7?[0m
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'A user with incorrect credentials is not allowed'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 8?[0m
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'A user with incorrect credentials is not allowed'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 9?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'Merchant after registration must be LOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 10?[0m
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe1 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+?[1;31m
+Start test 11?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user johndoe1 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 12?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 1'
+Expectations: 'Result validating of Transaction must be 'ALLOWED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 13?[0m
+2022-08-15 20:01:28.042  INFO 8720 --- [     Thread-336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-08-15 20:01:28.044  INFO 8720 --- [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-08-15 20:01:28.045  INFO 8720 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-08-15 20:01:28.067  INFO 8720 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.1.RELEASE)
+
+2022-08-15 20:01:28.204  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 8720 (started by user in C:\git\Anti-Fraud System4\Anti-Fraud System\task)
+2022-08-15 20:01:28.204  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+2022-08-15 20:01:28.485  INFO 8720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2022-08-15 20:01:28.495  INFO 8720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 1 JPA repository interfaces.
+2022-08-15 20:01:28.568  INFO 8720 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-08-15 20:01:28.569  INFO 8720 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-15 20:01:28.569  INFO 8720 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-08-15 20:01:28.598  INFO 8720 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-15 20:01:28.598  INFO 8720 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 392 ms
+2022-08-15 20:01:28.637  INFO 8720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-08-15 20:01:28.646  INFO 8720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-08-15 20:01:28.646  INFO 8720 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
+2022-08-15 20:01:28.690  INFO 8720 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-15 20:01:28.694  INFO 8720 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-15 20:01:28.699  INFO 8720 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-08-15 20:01:28.724  WARN 8720 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-08-15 20:01:28.748  INFO 8720 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-15 20:01:28.748  INFO 8720 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-08-15 20:01:28.840  INFO 8720 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-08-15 20:01:28.849  INFO 8720 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c8e4a82, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b3ee43e, org.springframework.security.web.header.HeaderWriterFilter@167bb934, org.springframework.security.web.authentication.logout.LogoutFilter@74797b90, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7676b2b9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@53da2aec, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@18a38bba, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1896299b, org.springframework.security.web.session.SessionManagementFilter@3b3f62d7, org.springframework.security.web.access.ExceptionTranslationFilter@ea0c99c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@10553a61]
+2022-08-15 20:01:28.907  INFO 8720 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-08-15 20:01:28.907  INFO 8720 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2022-08-15 20:01:28.934  INFO 8720 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2022-08-15 20:01:28.938  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 0.763 seconds (JVM running for 10.793)
+?[1;31m
+Start test 14?[0m
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'After restart user must exist'
+-----
+2022-08-15 20:01:28.942  INFO 8720 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-15 20:01:28.943  INFO 8720 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-15 20:01:28.945  INFO 8720 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+?[1;31m
+Start test 15?[0m
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 1",
+   "username": "johndoe1",
+   "password": "oMoa3VvqnLxW"
+}'
+Expectations: 'In case of an attempt to register an existing user, endpoint must respond with HTTP CONFLICT status (409).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 16?[0m
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 2",
+   "username": "johndoe2",
+   "password": "oMoa5VvqnLxW"
+}'
+Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select count(*) as col_0_0_ from user_account user0_
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into user_account (is_locked, name, password, role, user_name, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 17?[0m
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+?[1;31m
+Start test 18?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 199'
+Expectations: 'Result validating of Transaction must be 'ALLOWED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 19?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 200'
+Expectations: 'Result validating of Transaction must be 'ALLOWED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 20?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 201'
+Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 21?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 1499'
+Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 22?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 1500'
+Expectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 23?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 1501'
+Expectations: 'Result validating of Transaction must be 'PROHIBITED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 24?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 2000'
+Expectations: 'Result validating of Transaction must be 'PROHIBITED''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 25?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = -1'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:35.177  WARN 8720 --- [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [-1]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]
+?[1;31m
+Start test 26?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = 0'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:35.686  WARN 8720 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [0]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]
+?[1;31m
+Start test 27?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = null'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:36.201  WARN 8720 --- [nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+?[1;31m
+Start test 28?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = ""'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:36.713  WARN 8720 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+?[1;31m
+Start test 29?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'amount = " "'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:37.222  WARN 8720 --- [io-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+?[1;31m
+Start test 30?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+request: 'empty body'
+Expectations: 'Response status must be 'Bad request''
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:37.728  WARN 8720 --- [nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+?[1;31m
+Start test 31?[0m
+Test case
+Testing api: '/api/auth/user'
+request: '/api/auth/user/somebody'
+Expectations: 'If a user is not found, respond with HTTP Not Found status (404).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 32?[0m
+Test case
+Testing api: '/api/auth/user'
+request: '/api/auth/user/johndoe1'
+Expectations: 'The endpoint must delete the user and respond with HTTP OK status (200)'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: delete from user_account where id=?
+?[1;31m
+Start test 33?[0m
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'User 'johndoe1' must be delete'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+?[1;31m
+Start test 34?[0m
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a user is not found, endpoint must respond with the HTTP Not Found status (404).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 35?[0m
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a role is not found, endpoint must respond with the HTTP Bad Request status (400).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+2022-08-15 20:01:40.307  WARN 8720 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String "USER": not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String "USER": not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]
+ at [Source: (PushbackInputStream); line: 1, column: 31] (through reference chain: antifraud.web.dto.ChangeRoleDto["role"])]
+?[1;31m
+Start test 36?[0m
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a role is ADMINISTRATOR, endpoint must respond with the HTTP Bad Request status (400).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 37?[0m
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a role successfully changed, respond with the HTTP OK status (200)'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+?[1;31m
+Start test 38?[0m
+Test case
+Testing api: '/api/auth/role'
+Expectations: 'If a role already assigned to a user, endpoint must respond with the HTTP Conflict status (409).'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 39?[0m
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe2 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+?[1;31m
+Start test 40?[0m
+Test case
+Testing api: '/api/auth/list'
+Expectations: 'Role for user 'johndoe2' must be changed to SUPPORT'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
+?[1;31m
+Start test 41?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'Role MERCHANT must be removed from user johndoe2!'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 42?[0m
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 3",
+   "username": "johndoe3",
+   "password": "oMoa6VvqnLxW"
+}'
+Expectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select count(*) as col_0_0_ from user_account user0_
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into user_account (is_locked, name, password, role, user_name, id) values (?, ?, ?, ?, ?, ?)
+?[1;31m
+Start test 43?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'MERCHANT user after registration must be LOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 44?[0m
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+?[1;31m
+Start test 45?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 46?[0m
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe3 must be LOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+?[1;31m
+Start test 47?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user johndoe3 must be LOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 48?[0m
+Test case
+Testing api: '/api/auth/access'
+Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+Hibernate: update user_account set is_locked=?, name=?, password=?, role=?, user_name=? where id=?
+?[1;31m
+Start test 49?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 50?[0m
+Test case
+Testing api: '/api/antifraud/transaction/'
+Expectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction/'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 51?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 52?[0m
+Test case
+Testing api: '/api/antifraud/transaction/'
+Expectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction/'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+?[1;31m
+Start test 53?[0m
+Test case
+Testing api: '/api/antifraud/transaction'
+Expectations: 'A user with role ANONYMOUS must not have access to /api/antifraud/transaction'
+-----
+?[1;31m
+Start test 54?[0m
+Test case
+Testing api: '/api/auth/user'
+Expectations: 'A user with role ANONYMOUS must not have access to DELETE /api/auth/user'
+-----
+Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

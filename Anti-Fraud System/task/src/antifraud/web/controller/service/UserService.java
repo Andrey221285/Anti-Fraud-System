@@ -78,7 +78,7 @@ public class UserService {
         if (user.getRole() == ROLES.ADMINISTRATOR){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        if (changeRoleDto.getRole() != ROLES.MERCHANT || changeRoleDto.getRole() != ROLES.SUPPORT){
+        if (changeRoleDto.getRole() != ROLES.MERCHANT && changeRoleDto.getRole() != ROLES.SUPPORT){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
