@@ -306,6 +306,12 @@ files:
                             jsonResponse);
                 }
 
+                if (jsonResponse.get("id") == null) {
+                    return CheckResult.wrong("Response must contain user ID\n" +
+                            "Received response:\n" +
+                            jsonResponse);
+                }
+
                 if (jsonResponse.get("id").isJsonNull()) {
                     return CheckResult.wrong("Response must contain user ID\n" +
                             "Received response:\n" +
@@ -584,9 +590,6 @@ files:
 - name: src/antifraud/web/controller/service/UserService.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/projects/232/stages/1162/implement#comment
+feedback_link: https://hyperskill.org/learn/step/18068#comment
 status: Solved
-feedback:
-  message: Congratulations!
-  time: Wed, 22 Jun 2022 11:51:16 UTC
 record: 1

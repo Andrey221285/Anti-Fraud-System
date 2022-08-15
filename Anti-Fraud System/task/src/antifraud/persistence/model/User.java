@@ -1,5 +1,6 @@
 package antifraud.persistence.model;
 
+import antifraud.web.controller.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,4 +27,10 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @Column
+    private UserService.ROLES role;
+
+    @Column
+    private boolean isLocked;
 }

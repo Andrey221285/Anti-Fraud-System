@@ -210,7 +210,7 @@ files:
     import org.springframework.http.HttpStatus;
     import org.springframework.web.bind.annotation.ResponseStatus;
 
-    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "User not found!")
+    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "User not found!")
     public class UserNotFoundException extends RuntimeException {
     }
   learner_created: false
@@ -1076,6 +1076,12 @@ files:
                             jsonResponse);
                 }
 
+                if (jsonResponse.get("id") == null) {
+                    return CheckResult.wrong("Response must contain user ID\n" +
+                            "Received response:\n" +
+                            jsonResponse);
+                }
+
                 if (jsonResponse.get("id").isJsonNull()) {
                     return CheckResult.wrong("Response must contain user ID\n" +
                             "Received response:\n" +
@@ -1820,6 +1826,6 @@ files:
         };
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/232/stages/1165/implement#comment
+feedback_link: https://hyperskill.org/learn/step/18071#comment
 status: Unchecked
 record: -1

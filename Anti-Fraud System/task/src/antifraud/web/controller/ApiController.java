@@ -5,9 +5,7 @@ import antifraud.mappers.UserDTOMapper;
 import antifraud.persistence.model.User;
 import antifraud.web.controller.service.TransactionService;
 import antifraud.web.controller.service.UserService;
-import antifraud.web.dto.ResponseNewUserDto;
-import antifraud.web.dto.TransactionDto;
-import antifraud.web.dto.UserDto;
+import antifraud.web.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +54,26 @@ public class ApiController {
         map.put("status", "Deleted successfully!");
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @PutMapping("/api/auth/role")
+    public ResponseEntity<?> changeRole(@Valid @RequestBody ChangeRoleDto changeRoleDto){
+
+        ResponseNewUserDto responseNewUserDto = userDTOMapper.toResponseUserDto(userService.changeRole(changeRoleDto));;
+        return new ResponseEntity<>(responseNewUserDto, HttpStatus.OK);
+
+    }
+
+    @PutMapping("/api/auth/access")
+    public ResponseEntity<?> changeAccess (@Valid @RequestBody ChangeAccessto changeAccessto){
+
+        User user = userService.changeAccess(changeAccessto);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", String.format("User %s %s!", user.getUserName(), user.isLocked() ? "locked" : "unlocked"));
+        return new ResponseEntity<>(map, HttpStatus.OK);
+
+    }
+
+
 
 
 

@@ -1,5 +1,6 @@
 package antifraud.security;
 
+import antifraud.web.controller.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -39,6 +40,10 @@ public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests() // manage access
                 .mvcMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
+                .mvcMatchers(HttpMethod.DELETE, "/api/auth/user").hasRole(UserService.ROLES.ADMINISTRATOR.name())
+                .mvcMatchers(HttpMethod.PUT, "/api/auth/role").hasRole(UserService.ROLES.ADMINISTRATOR.name())
+                .mvcMatchers(HttpMethod.PUT, "/api/auth/access").hasRole(UserService.ROLES.ADMINISTRATOR.name())
+                .mvcMatchers(HttpMethod.GET, "/api/auth/list").hasAnyRole(UserService.ROLES.ADMINISTRATOR.name(),UserService.ROLES.SUPPORT.name() )
                 .mvcMatchers("/actuator/shutdown").permitAll() // needs to run test
 
                 // other matchers
