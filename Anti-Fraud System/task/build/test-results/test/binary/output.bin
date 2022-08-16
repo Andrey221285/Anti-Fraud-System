@@ -9,34 +9,34 @@
 * =========|_|==============|___/=/_/_/_/
 , :: Spring Boot ::        (v2.3.1.RELEASE)
 
-È2022-08-15 20:01:18.974  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 8720 (started by user in C:\git\Anti-Fraud System4\Anti-Fraud System\task)
-•2022-08-15 20:01:18.976  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
-°2022-08-15 20:01:19.852  INFO 8720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-π2022-08-15 20:01:19.908  INFO 8720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48ms. Found 1 JPA repository interfaces.
-ë2022-08-15 20:01:20.404  INFO 8720 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-~2022-08-15 20:01:20.412  INFO 8720 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-î2022-08-15 20:01:20.412  INFO 8720 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-ó2022-08-15 20:01:20.488  INFO 8720 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-§2022-08-15 20:01:20.489  INFO 8720 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1477 ms
-2022-08-15 20:01:20.595  INFO 8720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-Ñ2022-08-15 20:01:20.745  INFO 8720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-∂2022-08-15 20:01:20.752  INFO 8720 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
-õ2022-08-15 20:01:20.862  INFO 8720 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-û2022-08-15 20:01:20.900  INFO 8720 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-ú2022-08-15 20:01:20.933  WARN 8720 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-ó2022-08-15 20:01:20.946  INFO 8720 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
-ù2022-08-15 20:01:21.085  INFO 8720 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-û2022-08-15 20:01:21.189  INFO 8720 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-ö2022-08-15 20:01:21.322  INFO 8720 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-ù2022-08-15 20:01:21.364  INFO 8720 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@416b1265, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d9de284, org.springframework.security.web.header.HeaderWriterFilter@37bda983, org.springframework.security.web.authentication.logout.LogoutFilter@df7d1d4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3d88ce0e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7540160e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@70f85235, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2830315f, org.springframework.security.web.session.SessionManagementFilter@75d97e18, org.springframework.security.web.access.ExceptionTranslationFilter@606b53a3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4a4b288a]
+Î2022-08-16 18:20:53.069  INFO 11824 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 11824 (started by user in C:\git\Anti-Fraud System4\Anti-Fraud System\task)
+¶2022-08-16 18:20:53.072  INFO 11824 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+¢2022-08-16 18:20:54.047  INFO 11824 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+∫2022-08-16 18:20:54.119  INFO 11824 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64ms. Found 1 JPA repository interfaces.
+í2022-08-16 18:20:54.656  INFO 11824 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-08-16 18:20:54.665  INFO 11824 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+ï2022-08-16 18:20:54.665  INFO 11824 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+ò2022-08-16 18:20:54.746  INFO 11824 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+•2022-08-16 18:20:54.747  INFO 11824 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1635 ms
+Ä2022-08-16 18:20:54.865  INFO 11824 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+Ö2022-08-16 18:20:55.018  INFO 11824 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+∑2022-08-16 18:20:55.024  INFO 11824 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
+ú2022-08-16 18:20:55.142  INFO 11824 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+ü2022-08-16 18:20:55.177  INFO 11824 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+ù2022-08-16 18:20:55.208  WARN 11824 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ò2022-08-16 18:20:55.234  INFO 11824 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+û2022-08-16 18:20:55.388  INFO 11824 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+ü2022-08-16 18:20:55.509  INFO 11824 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+õ2022-08-16 18:20:55.628  INFO 11824 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+ü2022-08-16 18:20:55.677  INFO 11824 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14292d71, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ca22e19, org.springframework.security.web.header.HeaderWriterFilter@31b741e2, org.springframework.security.web.authentication.logout.LogoutFilter@531a716c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5d6b42cf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1bfa3893, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a6dc5ea, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@48e74764, org.springframework.security.web.session.SessionManagementFilter@44aed6a4, org.springframework.security.web.access.ExceptionTranslationFilter@1846ad0f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6afeaf2d]
 ∞Hibernate: create table user_account (id bigint not null, is_locked boolean, name varchar(255), password varchar(255), role integer, user_name varchar(255), primary key (id))
 KHibernate: create sequence hibernate_sequence start with 1 increment by 1
-ÿ2022-08-15 20:01:21.842  INFO 8720 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-®2022-08-15 20:01:21.848  INFO 8720 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-†2022-08-15 20:01:21.945  INFO 8720 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-¶2022-08-15 20:01:21.947  INFO 8720 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
-ä2022-08-15 20:01:22.153  INFO 8720 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-™2022-08-15 20:01:22.162  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 3.446 seconds (JVM running for 4.017)
+Ÿ2022-08-16 18:20:56.181  INFO 11824 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+©2022-08-16 18:20:56.187  INFO 11824 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+°2022-08-16 18:20:56.280  INFO 11824 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+ß2022-08-16 18:20:56.281  INFO 11824 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
+ã2022-08-16 18:20:56.511  INFO 11824 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+´2022-08-16 18:20:56.524  INFO 11824 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 3.757 seconds (JVM running for 4.454)
 
 Test case
 Testing api: '/api/auth/user'
@@ -46,10 +46,10 @@ Test case
 }'
 hExpectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
 -----
-û2022-08-15 20:01:22.390  INFO 8720 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-ç2022-08-15 20:01:22.391  INFO 8720 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-Ö2022-08-15 20:01:22.396  INFO 8720 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
-¥2022-08-15 20:01:22.533  WARN 8720 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotNull.userDto.username,NotNull.username,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be null]] [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotBlank.userDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be blank]] ]
+ü2022-08-16 18:20:56.777  INFO 11824 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+é2022-08-16 18:20:56.778  INFO 11824 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+Ü2022-08-16 18:20:56.785  INFO 11824 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+µ2022-08-16 18:20:56.936  WARN 11824 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotNull.userDto.username,NotNull.username,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be null]] [Field error in object 'userDto' on field 'username': rejected value [null]; codes [NotBlank.userDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.username,username]; arguments []; default message [username]]; default message [must not be blank]] ]
 [1;31m
 Start test 2[0m
 
@@ -61,7 +61,7 @@ Test case
 }'
 hExpectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
 -----
-¥2022-08-15 20:01:22.577  WARN 8720 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotBlank.userDto.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be blank]] [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotNull.userDto.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be null]] ]
+µ2022-08-16 18:20:56.975  WARN 11824 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.registerUserAccount(antifraud.web.dto.UserDto) with 2 errors: [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotBlank.userDto.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be blank]] [Field error in object 'userDto' on field 'password': rejected value [null]; codes [NotNull.userDto.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [must not be null]] ]
 [1;31m
 Start test 3[0m
 
@@ -165,10 +165,10 @@ Test case
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
 [1;31m
 Start test 13[0m
-§2022-08-15 20:01:28.042  INFO 8720 --- [     Thread-336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-ú2022-08-15 20:01:28.044  INFO 8720 --- [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-â2022-08-15 20:01:28.045  INFO 8720 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-á2022-08-15 20:01:28.067  INFO 8720 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+•2022-08-16 18:21:02.476  INFO 11824 --- [     Thread-336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+ù2022-08-16 18:21:02.477  INFO 11824 --- [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+ä2022-08-16 18:21:02.478  INFO 11824 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+à2022-08-16 18:21:02.500  INFO 11824 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 
 )  .   ____          _            __ _ _
 * /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -178,30 +178,30 @@ Test case
 * =========|_|==============|___/=/_/_/_/
 , :: Spring Boot ::        (v2.3.1.RELEASE)
 
-È2022-08-15 20:01:28.204  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 8720 (started by user in C:\git\Anti-Fraud System4\Anti-Fraud System\task)
-•2022-08-15 20:01:28.204  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
-°2022-08-15 20:01:28.485  INFO 8720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-∏2022-08-15 20:01:28.495  INFO 8720 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 1 JPA repository interfaces.
-ë2022-08-15 20:01:28.568  INFO 8720 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-~2022-08-15 20:01:28.569  INFO 8720 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-î2022-08-15 20:01:28.569  INFO 8720 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-ó2022-08-15 20:01:28.598  INFO 8720 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-£2022-08-15 20:01:28.598  INFO 8720 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 392 ms
-2022-08-15 20:01:28.637  INFO 8720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-Ñ2022-08-15 20:01:28.646  INFO 8720 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-∂2022-08-15 20:01:28.646  INFO 8720 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
-õ2022-08-15 20:01:28.690  INFO 8720 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-û2022-08-15 20:01:28.694  INFO 8720 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-û2022-08-15 20:01:28.699  INFO 8720 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-ú2022-08-15 20:01:28.724  WARN 8720 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-ÿ2022-08-15 20:01:28.748  INFO 8720 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-®2022-08-15 20:01:28.748  INFO 8720 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-ö2022-08-15 20:01:28.840  INFO 8720 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-ù2022-08-15 20:01:28.849  INFO 8720 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c8e4a82, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b3ee43e, org.springframework.security.web.header.HeaderWriterFilter@167bb934, org.springframework.security.web.authentication.logout.LogoutFilter@74797b90, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7676b2b9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@53da2aec, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@18a38bba, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1896299b, org.springframework.security.web.session.SessionManagementFilter@3b3f62d7, org.springframework.security.web.access.ExceptionTranslationFilter@ea0c99c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@10553a61]
-†2022-08-15 20:01:28.907  INFO 8720 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-¶2022-08-15 20:01:28.907  INFO 8720 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
-ä2022-08-15 20:01:28.934  INFO 8720 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-´2022-08-15 20:01:28.938  INFO 8720 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 0.763 seconds (JVM running for 10.793)
+Î2022-08-16 18:21:02.632  INFO 11824 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on WIN-V2VIIKH07VR with PID 11824 (started by user in C:\git\Anti-Fraud System4\Anti-Fraud System\task)
+¶2022-08-16 18:21:02.632  INFO 11824 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+¢2022-08-16 18:21:02.941  INFO 11824 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+π2022-08-16 18:21:02.951  INFO 11824 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9ms. Found 1 JPA repository interfaces.
+í2022-08-16 18:21:03.028  INFO 11824 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-08-16 18:21:03.028  INFO 11824 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+ï2022-08-16 18:21:03.029  INFO 11824 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+ò2022-08-16 18:21:03.046  INFO 11824 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+§2022-08-16 18:21:03.047  INFO 11824 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 414 ms
+Ä2022-08-16 18:21:03.083  INFO 11824 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+Ö2022-08-16 18:21:03.092  INFO 11824 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+∑2022-08-16 18:21:03.093  INFO 11824 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:file:../service_db'
+ú2022-08-16 18:21:03.132  INFO 11824 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+ü2022-08-16 18:21:03.136  INFO 11824 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+ü2022-08-16 18:21:03.141  INFO 11824 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+ù2022-08-16 18:21:03.156  WARN 11824 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+Ÿ2022-08-16 18:21:03.177  INFO 11824 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+©2022-08-16 18:21:03.178  INFO 11824 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+õ2022-08-16 18:21:03.275  INFO 11824 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+ü2022-08-16 18:21:03.284  INFO 11824 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@42d7e8bc, org.springframework.security.web.context.SecurityContextPersistenceFilter@58ca6ba3, org.springframework.security.web.header.HeaderWriterFilter@53da2aec, org.springframework.security.web.authentication.logout.LogoutFilter@7910e307, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@460aa24e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@74797b90, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7676b2b9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7b6854b5, org.springframework.security.web.session.SessionManagementFilter@18a38bba, org.springframework.security.web.access.ExceptionTranslationFilter@5b3ee43e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1896299b]
+°2022-08-16 18:21:03.348  INFO 11824 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+ß2022-08-16 18:21:03.348  INFO 11824 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
+ã2022-08-16 18:21:03.375  INFO 11824 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+´2022-08-16 18:21:03.379  INFO 11824 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 0.767 seconds (JVM running for 11.31)
 [1;31m
 Start test 14[0m
 
@@ -209,9 +209,9 @@ Test case
 Testing api: '/api/auth/list'
 .Expectations: 'After restart user must exist'
 -----
-û2022-08-15 20:01:28.942  INFO 8720 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-ç2022-08-15 20:01:28.943  INFO 8720 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-Ö2022-08-15 20:01:28.945  INFO 8720 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+ü2022-08-16 18:21:03.384  INFO 11824 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+é2022-08-16 18:21:03.384  INFO 11824 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+Ü2022-08-16 18:21:03.386  INFO 11824 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
 ◊Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_
 [1;31m
@@ -324,7 +324,7 @@ Test case
 6Expectations: 'Response status must be 'Bad request''
 -----
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
- 2022-08-15 20:01:35.177  WARN 8720 --- [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [-1]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]
+À2022-08-16 18:21:09.736  WARN 11824 --- [nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [-1]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]
 [1;31m
 Start test 26[0m
 
@@ -334,7 +334,7 @@ Test case
 6Expectations: 'Response status must be 'Bad request''
 -----
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
-…2022-08-15 20:01:35.686  WARN 8720 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [0]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]
+ 2022-08-16 18:21:10.268  WARN 11824 --- [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [0]; codes [Min.transactionDto.amount,Min.amount,Min.java.lang.Long,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount],1]; default message [must be greater than or equal to 1]] ]
 [1;31m
 Start test 27[0m
 
@@ -344,7 +344,7 @@ Test case
 6Expectations: 'Response status must be 'Bad request''
 -----
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
-»2022-08-15 20:01:36.201  WARN 8720 --- [nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+…2022-08-16 18:21:10.793  WARN 11824 --- [nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
 [1;31m
 Start test 28[0m
 
@@ -354,7 +354,7 @@ Test case
 6Expectations: 'Response status must be 'Bad request''
 -----
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
-»2022-08-15 20:01:36.713  WARN 8720 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+…2022-08-16 18:21:11.312  WARN 11824 --- [nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
 [1;31m
 Start test 29[0m
 
@@ -364,7 +364,7 @@ Test case
 6Expectations: 'Response status must be 'Bad request''
 -----
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
-»2022-08-15 20:01:37.222  WARN 8720 --- [io-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+…2022-08-16 18:21:11.845  WARN 11824 --- [nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
 [1;31m
 Start test 30[0m
 
@@ -374,7 +374,7 @@ Test case
 6Expectations: 'Response status must be 'Bad request''
 -----
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
-»2022-08-15 20:01:37.728  WARN 8720 --- [nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
+…2022-08-16 18:21:12.372  WARN 11824 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<?> antifraud.web.controller.ApiController.addTransaction(antifraud.web.dto.TransactionDto): [Field error in object 'transactionDto' on field 'amount': rejected value [null]; codes [NotNull.transactionDto.amount,NotNull.amount,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionDto.amount,amount]; arguments []; default message [amount]]; default message [must not be null]] ]
 [1;31m
 Start test 31[0m
 
@@ -422,7 +422,7 @@ Test case
 fExpectations: 'If a role is not found, endpoint must respond with the HTTP Bad Request status (400).'
 -----
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
-å2022-08-15 20:01:40.307  WARN 8720 --- [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String "USER": not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String "USER": not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]
+ç2022-08-16 18:21:15.023  WARN 11824 --- [nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String "USER": not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `antifraud.web.controller.service.UserService$ROLES` from String "USER": not one of the values accepted for Enum class: [MERCHANT, ADMINISTRATOR, SUPPORT]
 } at [Source: (PushbackInputStream); line: 1, column: 31] (through reference chain: antifraud.web.dto.ChangeRoleDto["role"])]
 [1;31m
 Start test 36[0m
@@ -593,5 +593,121 @@ Test case
 Test case
 Testing api: '/api/auth/user'
 YExpectations: 'A user with role ANONYMOUS must not have access to DELETE /api/auth/user'
+-----
+[1;31m
+Start test 55[0m
+
+Test case
+Testing api: '/api/auth/user'
+WExpectations: 'A user with role SUPPORT must not have access to DELETE /api/auth/user'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 56[0m
+
+Test case
+Testing api: '/api/auth/user'
+XExpectations: 'A user with role MERCHANT must not have access to DELETE /api/auth/user'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 57[0m
+
+Test case
+Testing api: '/api/auth/user'
+XExpectations: 'A user with role MERCHANT must not have access to DELETE /api/auth/user'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 58[0m
+
+Test case
+Testing api: '/api/auth/list'
+RExpectations: 'A user with role ANONYMOUS must not have access to /api/auth/list'
+-----
+[1;31m
+Start test 59[0m
+
+Test case
+Testing api: '/api/auth/list'
+QExpectations: 'A user with role MERCHANT must not have access to /api/auth/list'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 60[0m
+
+Test case
+ Testing api: '/api/auth/access'
+SExpectations: 'A user with role MERCHANT must not have access to /api/auth/access'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 61[0m
+
+Test case
+ Testing api: '/api/auth/access'
+RExpectations: 'A user with role SUPPORT must not have access to /api/auth/access'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 62[0m
+
+Test case
+!Testing api: '/api/auth/access/'
+TExpectations: 'A user with role MERCHANT must not have access to /api/auth/access/'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 63[0m
+
+Test case
+!Testing api: '/api/auth/access/'
+SExpectations: 'A user with role SUPPORT must not have access to /api/auth/access/'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 64[0m
+
+Test case
+ Testing api: '/api/auth/access'
+TExpectations: 'A user with role ANONYMOUS must not have access to /api/auth/access'
+-----
+[1;31m
+Start test 65[0m
+
+Test case
+Testing api: '/api/auth/role'
+PExpectations: 'A user with role SUPPORT must not have access to /api/auth/role'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 66[0m
+
+Test case
+Testing api: '/api/auth/role'
+QExpectations: 'A user with role MERCHANT must not have access to /api/auth/role'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 67[0m
+
+Test case
+Testing api: '/api/auth/role'
+RExpectations: 'A user with role ANONYMOUS must not have access to /api/auth/role'
+-----
+[1;31m
+Start test 68[0m
+
+Test case
+Testing api: '/api/auth/role/'
+QExpectations: 'A user with role SUPPORT must not have access to /api/auth/role/'
+-----
+˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
+[1;31m
+Start test 69[0m
+
+Test case
+Testing api: '/api/auth/role/'
+RExpectations: 'A user with role MERCHANT must not have access to /api/auth/role/'
 -----
 ˛Hibernate: select user0_.id as id1_0_, user0_.is_locked as is_locke2_0_, user0_.name as name3_0_, user0_.password as password4_0_, user0_.role as role5_0_, user0_.user_name as user_nam6_0_ from user_account user0_ where upper(user0_.user_name)=upper(?)
