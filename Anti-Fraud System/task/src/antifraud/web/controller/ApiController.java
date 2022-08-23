@@ -78,7 +78,7 @@ public class ApiController {
     }
 
     @PostMapping("/api/antifraud/suspicious-ip")
-    public ResponseEntity<?> addSuspiciousIp(@RequestBody SuspiciousIpDto suspiciousIpDto){
+    public ResponseEntity<?> addSuspiciousIp(@Valid @RequestBody SuspiciousIpDto suspiciousIpDto){
         return new ResponseEntity<SuspiciousIp>(antiFraudService.addSuspiciousIp(suspiciousIpDto) ,HttpStatus.OK);
     }
 

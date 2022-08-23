@@ -1781,6 +1781,12 @@ files:
 - name: src/generated/antifraud/mappers/SuspiciousIpDtoMapperImpl.java
   visible: true
   learner_created: true
+- name: src/antifraud/validation/IpConstraint.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/validation/IpAddressValidator.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/18070#comment
 status: Failed
 feedback:
