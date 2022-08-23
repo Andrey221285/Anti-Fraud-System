@@ -45,6 +45,7 @@ public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
                 .mvcMatchers(HttpMethod.PUT, "/api/auth/access").hasRole(UserService.ROLES.ADMINISTRATOR.name())
                 .mvcMatchers(HttpMethod.GET, "/api/auth/list").hasAnyRole(UserService.ROLES.ADMINISTRATOR.name(),UserService.ROLES.SUPPORT.name() )
                 .mvcMatchers(HttpMethod.POST, "/api/antifraud/transaction").hasRole(UserService.ROLES.MERCHANT.name() )
+                .mvcMatchers( "/api/antifraud/suspicious-ip","/api/antifraud/suspicious-ip/**").hasRole(UserService.ROLES.SUPPORT.name() )
                 .antMatchers("/actuator/shutdown").permitAll() // needs to run test
 
                 // other matchers

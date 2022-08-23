@@ -1763,6 +1763,27 @@ files:
         };
     }
   learner_created: false
+- name: src/antifraud/web/dto/SuspiciousIpDto.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/persistence/model/SuspiciousIp.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/controller/service/AntiFraudService.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/persistence/dao/SuspiciousIpRepository.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/mappers/SuspiciousIpDtoMapper.java
+  visible: true
+  learner_created: true
+- name: src/generated/antifraud/mappers/SuspiciousIpDtoMapperImpl.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/18070#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: Compilation Failed
+  time: Tue, 23 Aug 2022 11:45:30 UTC
 record: -1

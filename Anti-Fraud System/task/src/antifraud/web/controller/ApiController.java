@@ -2,7 +2,9 @@ package antifraud.web.controller;
 
 
 import antifraud.mappers.UserDTOMapper;
+import antifraud.persistence.model.SuspiciousIp;
 import antifraud.persistence.model.User;
+import antifraud.web.controller.service.AntiFraudService;
 import antifraud.web.controller.service.TransactionService;
 import antifraud.web.controller.service.UserService;
 import antifraud.web.dto.*;
@@ -23,6 +25,8 @@ public class ApiController {
     UserService userService;
     @Autowired
     TransactionService transactionService;
+    @Autowired
+    AntiFraudService antiFraudService;
 
     @PostMapping("/api/antifraud/transaction")
     public ResponseEntity<?> addTransaction(@Valid @RequestBody TransactionDto transactionDto) {
@@ -73,8 +77,21 @@ public class ApiController {
 
     }
 
+    @PostMapping("/api/antifraud/suspicious-ip")
+    public ResponseEntity<?> addSuspiciousIp(@RequestBody SuspiciousIpDto suspiciousIpDto){
+        return new ResponseEntity<SuspiciousIp>(antiFraudService.addSuspiciousIp(suspiciousIpDto) ,HttpStatus.OK);
+    }
 
+    @DeleteMapping("/api/antifraud/suspicious-ip/{ip}")
+    public ResponseEntity<?> delSuspiciousIp(@PathVariable String ip){
+        antiFraudService.deleteIp(ip);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", String.format("IP %s successfully removed!", ip));
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 
-
-
+    @GetMapping("/api/antifraud/suspicious-ip")
+    public ResponseEntity<List<SuspiciousIp>> getIPs(){
+        return new ResponseEntity<>(antiFraudService.getIps(), HttpStatus.OK);
+    }
 }
