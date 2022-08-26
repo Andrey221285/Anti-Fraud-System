@@ -160,6 +160,420 @@ files:
 
     }
   learner_created: false
+- name: src/antifraud/security/RestAuthenticationEntryPoint.java
+  visible: true
+  text: |
+    package antifraud.security;
+
+    import org.springframework.security.core.AuthenticationException;
+    import org.springframework.security.web.AuthenticationEntryPoint;
+    import org.springframework.stereotype.Component;
+
+    import javax.servlet.ServletException;
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.io.IOException;
+
+    @Component
+    public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
+        @Override
+        public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+        }
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/ResponseNewUserDto.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class ResponseNewUserDto {
+        private Long id;
+        private String name;
+        private String username;
+    }
+  learner_created: false
+- name: src/antifraud/web/error/UserNotFoundException.java
+  visible: true
+  text: |
+    package antifraud.web.error;
+
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "User not found!")
+    public class UserNotFoundException extends RuntimeException {
+    }
+  learner_created: false
+- name: src/antifraud/web/controller/service/TransactionService.java
+  visible: true
+  text: |
+    package antifraud.web.controller.service;
+
+
+    import org.springframework.stereotype.Service;
+
+    @Service
+    public class TransactionService {
+        public enum STATUS{
+            ALLOWED,
+            MANUAL_PROCESSING,
+            PROHIBITED
+        }
+
+        public STATUS getStatus(long amount){
+            if (amount <=200){
+                return STATUS.ALLOWED;
+            } else if (amount <=1500){
+                return STATUS.MANUAL_PROCESSING;
+            } else {
+                return STATUS.PROHIBITED;
+            }
+        }
+
+
+    }
+  learner_created: false
+- name: src/antifraud/web/error/UserExistException.java
+  visible: true
+  text: |
+    package antifraud.web.error;
+
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "User exist!")
+    public class UserExistException extends RuntimeException {
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/UserDto.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    import javax.validation.constraints.NotBlank;
+    import javax.validation.constraints.NotNull;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class UserDto {
+
+        @NotBlank
+        @NotNull
+        private String name;
+        @NotBlank
+        @NotNull
+        private String username;
+        @NotNull
+        @NotBlank
+        private String password;
+    }
+  learner_created: false
+- name: src/antifraud/security/UserDetailsServiceImpl.java
+  visible: true
+  text: |
+    package antifraud.security;
+
+    import antifraud.persistence.dao.UserRepository;
+    import antifraud.persistence.model.User;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.security.core.userdetails.UserDetails;
+    import org.springframework.security.core.userdetails.UserDetailsService;
+    import org.springframework.security.core.userdetails.UsernameNotFoundException;
+    import org.springframework.stereotype.Service;
+
+    @Service
+    public class UserDetailsServiceImpl implements UserDetailsService {
+        @Autowired
+        UserRepository userRepository;
+
+
+        @Override
+        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            User user = userRepository.findByUserNameIgnoreCase(username);
+            if (user == null){
+                throw new UsernameNotFoundException("Not found: " + username);
+            }
+
+
+            return new UserDetailsImpl(user);
+        }
+    }
+  learner_created: false
+- name: src/antifraud/security/WebSecurityConfigurerImpl.java
+  visible: true
+  text: |
+    package antifraud.security;
+
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.http.HttpMethod;
+    import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+    import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+    import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+    import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+    import org.springframework.security.config.http.SessionCreationPolicy;
+    import org.springframework.security.core.userdetails.UserDetailsService;
+    import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+    import org.springframework.security.crypto.password.PasswordEncoder;
+
+    @EnableWebSecurity
+    public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
+        @Autowired
+        RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+        @Autowired
+        UserDetailsService userDetailsService;
+
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth
+                .userDetailsService(userDetailsService) // user store 1
+                .passwordEncoder(getEncoder());
+
+    //        auth
+    //                .inMemoryAuthentication() // user store 2
+    //                .withUser("Admin").password("hardcoded").roles("USER")
+    //                .and().passwordEncoder(NoOpPasswordEncoder.getInstance());
+        }
+
+        public void configure(HttpSecurity http) throws Exception {
+            http.httpBasic()
+                    .authenticationEntryPoint(restAuthenticationEntryPoint) // Handles auth error
+                    .and()
+                    .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
+                    .and()
+                    .authorizeRequests() // manage access
+                    .mvcMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
+                    .mvcMatchers("/actuator/shutdown").permitAll() // needs to run test
+
+                    // other matchers
+                    .and()
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                    ;
+        }
+
+        @Bean
+        public PasswordEncoder getEncoder() {
+            return new BCryptPasswordEncoder(13);
+        }
+
+    }
+  learner_created: false
+- name: src/antifraud/security/UserDetailsImpl.java
+  visible: true
+  text: |
+    package antifraud.security;
+
+    import antifraud.persistence.model.User;
+    import org.springframework.security.core.GrantedAuthority;
+    import org.springframework.security.core.userdetails.UserDetails;
+
+    import java.util.Collection;
+
+
+    public class UserDetailsImpl implements UserDetails {
+        private User user;
+
+        public UserDetailsImpl(User user) {
+            this.user = user;
+        }
+
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+            return null;
+        }
+
+        @Override
+        public String getPassword() {
+            return user.getPassword();
+        }
+
+        @Override
+        public String getUsername() {
+            return user.getUserName();
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+            return true;
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+            return true;
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+            return true;
+        }
+
+        @Override
+        public boolean isEnabled() {
+            return true;
+        }
+    }
+  learner_created: false
+- name: src/antifraud/persistence/dao/UserRepository.java
+  visible: true
+  text: |
+    package antifraud.persistence.dao;
+
+    import antifraud.persistence.model.User;
+    import org.springframework.data.jpa.repository.JpaRepository;
+    import org.springframework.stereotype.Repository;
+
+    @Repository
+    public interface UserRepository extends JpaRepository<User, Long> {
+
+        User findByUserNameIgnoreCase(String userName);
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/UserDtoResponse.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+    public class UserDtoResponse {
+    }
+  learner_created: false
+- name: src/antifraud/persistence/model/User.java
+  visible: true
+  text: |
+    package antifraud.persistence.model;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    import javax.persistence.*;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Entity
+    @Table(name = "user_account")
+    public class User {
+
+        @Id
+        @Column(unique = true, nullable = false)
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long id;
+
+        @Column
+        private String name;
+
+        @Column(name = "user_name")
+        private String userName;
+
+        @Column(name = "password")
+        private String password;
+    }
+  learner_created: false
+- name: src/antifraud/mappers/UserDTOMapper.java
+  visible: true
+  text: |
+    package antifraud.mappers;
+
+    import antifraud.persistence.model.User;
+    import antifraud.web.dto.ResponseNewUserDto;
+    import antifraud.web.dto.UserDto;
+    import org.mapstruct.Mapper;
+    import org.mapstruct.Mapping;
+
+    import java.util.List;
+
+    @Mapper(componentModel = "spring")
+    public interface UserDTOMapper {
+
+        @Mapping(target="userName", source="username")
+        User toUser (UserDto userDto);
+
+        @Mapping(target="username", source="userName")
+        ResponseNewUserDto toResponseUserDto (User User);
+
+
+        List<ResponseNewUserDto> toUserInfos(List<User> users);
+
+    }
+  learner_created: false
+- name: src/antifraud/web/controller/service/UserService.java
+  visible: true
+  text: |
+    package antifraud.web.controller.service;
+
+    import antifraud.mappers.UserDTOMapper;
+    import antifraud.persistence.dao.UserRepository;
+    import antifraud.persistence.model.User;
+    import antifraud.web.dto.UserDto;
+    import antifraud.web.error.UserExistException;
+    import antifraud.web.error.UserNotFoundException;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.security.crypto.password.PasswordEncoder;
+    import org.springframework.stereotype.Service;
+
+    import java.util.List;
+
+    @Service
+    public class UserService {
+        @Autowired
+        private UserRepository userRepository;
+
+        @Autowired
+        private UserDTOMapper userDTOMapper;
+
+        @Autowired
+        PasswordEncoder encoder;
+
+        public User registerNewUser(UserDto userDto){
+            if (userExist(userDto.getUsername())){
+                throw new UserExistException();
+            }
+
+            User user = userDTOMapper.toUser(userDto);
+            user.setPassword(encoder.encode(userDto.getPassword()));
+            userRepository.save(user);
+            return user;
+        }
+
+
+        private boolean userExist(String userName){
+            return userRepository.findByUserNameIgnoreCase(userName) != null;
+        }
+
+
+        public List<User> getAllUsers() {
+            return userRepository.findAll();
+        }
+
+        public User deleteUser(String userName) {
+            User user = userRepository.findByUserNameIgnoreCase(userName);
+            if (user != null){
+                userRepository.delete(user);
+                return user;
+            }else {
+                throw new UserNotFoundException();
+            }
+
+        }
+    }
+  learner_created: false
 - name: test/AntiFraudTest.java
   visible: false
   text: |-
@@ -822,429 +1236,12 @@ files:
         };
     }
   learner_created: false
-- name: src/antifraud/security/RestAuthenticationEntryPoint.java
-  visible: true
-  text: |
-    package antifraud.security;
-
-    import org.springframework.security.core.AuthenticationException;
-    import org.springframework.security.web.AuthenticationEntryPoint;
-    import org.springframework.stereotype.Component;
-
-    import javax.servlet.ServletException;
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
-    import java.io.IOException;
-
-    @Component
-    public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
-
-        @Override
-        public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
-        }
-    }
-  learner_created: false
-- name: src/antifraud/web/dto/ResponseNewUserDto.java
-  visible: true
-  text: |
-    package antifraud.web.dto;
-
-    import lombok.AllArgsConstructor;
-    import lombok.Data;
-    import lombok.NoArgsConstructor;
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class ResponseNewUserDto {
-        private Long id;
-        private String name;
-        private String username;
-    }
-  learner_created: false
-- name: src/antifraud/web/error/UserNotFoundException.java
-  visible: true
-  text: |
-    package antifraud.web.error;
-
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "User not found!")
-    public class UserNotFoundException extends RuntimeException {
-    }
-  learner_created: false
-- name: src/antifraud/web/controller/service/TransactionService.java
-  visible: true
-  text: |
-    package antifraud.web.controller.service;
-
-
-    import org.springframework.stereotype.Service;
-
-    @Service
-    public class TransactionService {
-        public enum STATUS{
-            ALLOWED,
-            MANUAL_PROCESSING,
-            PROHIBITED
-        }
-
-        public STATUS getStatus(long amount){
-            if (amount <=200){
-                return STATUS.ALLOWED;
-            } else if (amount <=1500){
-                return STATUS.MANUAL_PROCESSING;
-            } else {
-                return STATUS.PROHIBITED;
-            }
-        }
-
-
-    }
-  learner_created: false
-- name: src/antifraud/web/error/UserExistException.java
-  visible: true
-  text: |
-    package antifraud.web.error;
-
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.CONFLICT, reason = "User exist!")
-    public class UserExistException extends RuntimeException {
-    }
-  learner_created: false
-- name: src/antifraud/web/dto/UserDto.java
-  visible: true
-  text: |
-    package antifraud.web.dto;
-
-    import lombok.AllArgsConstructor;
-    import lombok.Data;
-    import lombok.NoArgsConstructor;
-
-    import javax.validation.constraints.NotBlank;
-    import javax.validation.constraints.NotNull;
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class UserDto {
-
-        @NotBlank
-        @NotNull
-        private String name;
-        @NotBlank
-        @NotNull
-        private String username;
-        @NotNull
-        @NotBlank
-        private String password;
-    }
-  learner_created: false
-- name: src/antifraud/security/UserDetailsServiceImpl.java
-  visible: true
-  text: |
-    package antifraud.security;
-
-    import antifraud.persistence.dao.UserRepository;
-    import antifraud.persistence.model.User;
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.security.core.userdetails.UserDetails;
-    import org.springframework.security.core.userdetails.UserDetailsService;
-    import org.springframework.security.core.userdetails.UsernameNotFoundException;
-    import org.springframework.stereotype.Service;
-
-    @Service
-    public class UserDetailsServiceImpl implements UserDetailsService {
-        @Autowired
-        UserRepository userRepository;
-
-
-        @Override
-        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-            User user = userRepository.findByUserNameIgnoreCase(username);
-            if (user == null){
-                throw new UsernameNotFoundException("Not found: " + username);
-            }
-
-
-            return new UserDetailsImpl(user);
-        }
-    }
-  learner_created: false
-- name: src/antifraud/security/WebSecurityConfigurerImpl.java
-  visible: true
-  text: |
-    package antifraud.security;
-
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.context.annotation.Bean;
-    import org.springframework.http.HttpMethod;
-    import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-    import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-    import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-    import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-    import org.springframework.security.config.http.SessionCreationPolicy;
-    import org.springframework.security.core.userdetails.UserDetailsService;
-    import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-    import org.springframework.security.crypto.password.PasswordEncoder;
-
-    @EnableWebSecurity
-    public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
-        @Autowired
-        RestAuthenticationEntryPoint restAuthenticationEntryPoint;
-        @Autowired
-        UserDetailsService userDetailsService;
-
-        @Override
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth
-                .userDetailsService(userDetailsService) // user store 1
-                .passwordEncoder(getEncoder());
-
-    //        auth
-    //                .inMemoryAuthentication() // user store 2
-    //                .withUser("Admin").password("hardcoded").roles("USER")
-    //                .and().passwordEncoder(NoOpPasswordEncoder.getInstance());
-        }
-
-        public void configure(HttpSecurity http) throws Exception {
-            http.httpBasic()
-                    .authenticationEntryPoint(restAuthenticationEntryPoint) // Handles auth error
-                    .and()
-                    .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
-                    .and()
-                    .authorizeRequests() // manage access
-                    .mvcMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
-                    .mvcMatchers("/actuator/shutdown").permitAll() // needs to run test
-
-                    // other matchers
-                    .and()
-                    .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                    ;
-        }
-
-        @Bean
-        public PasswordEncoder getEncoder() {
-            return new BCryptPasswordEncoder(13);
-        }
-
-    }
-  learner_created: false
-- name: src/antifraud/security/UserDetailsImpl.java
-  visible: true
-  text: |
-    package antifraud.security;
-
-    import antifraud.persistence.model.User;
-    import org.springframework.security.core.GrantedAuthority;
-    import org.springframework.security.core.userdetails.UserDetails;
-
-    import java.util.Collection;
-
-
-    public class UserDetailsImpl implements UserDetails {
-        private User user;
-
-        public UserDetailsImpl(User user) {
-            this.user = user;
-        }
-
-        @Override
-        public Collection<? extends GrantedAuthority> getAuthorities() {
-            return null;
-        }
-
-        @Override
-        public String getPassword() {
-            return user.getPassword();
-        }
-
-        @Override
-        public String getUsername() {
-            return user.getUserName();
-        }
-
-        @Override
-        public boolean isAccountNonExpired() {
-            return true;
-        }
-
-        @Override
-        public boolean isAccountNonLocked() {
-            return true;
-        }
-
-        @Override
-        public boolean isCredentialsNonExpired() {
-            return true;
-        }
-
-        @Override
-        public boolean isEnabled() {
-            return true;
-        }
-    }
-  learner_created: false
-- name: src/antifraud/persistence/dao/UserRepository.java
-  visible: true
-  text: |
-    package antifraud.persistence.dao;
-
-    import antifraud.persistence.model.User;
-    import org.springframework.data.jpa.repository.JpaRepository;
-    import org.springframework.stereotype.Repository;
-
-    @Repository
-    public interface UserRepository extends JpaRepository<User, Long> {
-
-        User findByUserNameIgnoreCase(String userName);
-    }
-  learner_created: false
-- name: src/antifraud/web/dto/UserDtoResponse.java
-  visible: true
-  text: |
-    package antifraud.web.dto;
-
-    public class UserDtoResponse {
-    }
-  learner_created: false
-- name: src/antifraud/persistence/model/User.java
-  visible: true
-  text: |
-    package antifraud.persistence.model;
-
-    import lombok.AllArgsConstructor;
-    import lombok.Data;
-    import lombok.NoArgsConstructor;
-
-    import javax.persistence.*;
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Entity
-    @Table(name = "user_account")
-    public class User {
-
-        @Id
-        @Column(unique = true, nullable = false)
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private Long id;
-
-        @Column
-        private String name;
-
-        @Column(name = "user_name")
-        private String userName;
-
-        @Column(name = "password")
-        private String password;
-    }
-  learner_created: false
-- name: src/antifraud/mappers/UserDTOMapper.java
-  visible: true
-  text: |
-    package antifraud.mappers;
-
-    import antifraud.persistence.model.User;
-    import antifraud.web.dto.ResponseNewUserDto;
-    import antifraud.web.dto.UserDto;
-    import org.mapstruct.Mapper;
-    import org.mapstruct.Mapping;
-
-    import java.util.List;
-
-    @Mapper(componentModel = "spring")
-    public interface UserDTOMapper {
-
-        @Mapping(target="userName", source="username")
-        User toUser (UserDto userDto);
-
-        @Mapping(target="username", source="userName")
-        ResponseNewUserDto toResponseUserDto (User User);
-
-
-        List<ResponseNewUserDto> toUserInfos(List<User> users);
-
-    }
-  learner_created: false
-- name: src/antifraud/web/controller/service/UserService.java
-  visible: true
-  text: |
-    package antifraud.web.controller.service;
-
-    import antifraud.mappers.UserDTOMapper;
-    import antifraud.persistence.dao.UserRepository;
-    import antifraud.persistence.model.User;
-    import antifraud.web.dto.UserDto;
-    import antifraud.web.error.UserExistException;
-    import antifraud.web.error.UserNotFoundException;
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.security.crypto.password.PasswordEncoder;
-    import org.springframework.stereotype.Service;
-
-    import java.util.List;
-
-    @Service
-    public class UserService {
-        @Autowired
-        private UserRepository userRepository;
-
-        @Autowired
-        private UserDTOMapper userDTOMapper;
-
-        @Autowired
-        PasswordEncoder encoder;
-
-        public User registerNewUser(UserDto userDto){
-            if (userExist(userDto.getUsername())){
-                throw new UserExistException();
-            }
-
-            User user = userDTOMapper.toUser(userDto);
-            user.setPassword(encoder.encode(userDto.getPassword()));
-            userRepository.save(user);
-            return user;
-        }
-
-
-        private boolean userExist(String userName){
-            return userRepository.findByUserNameIgnoreCase(userName) != null;
-        }
-
-
-        public List<User> getAllUsers() {
-            return userRepository.findAll();
-        }
-
-        public User deleteUser(String userName) {
-            User user = userRepository.findByUserNameIgnoreCase(userName);
-            if (user != null){
-                userRepository.delete(user);
-                return user;
-            }else {
-                throw new UserNotFoundException();
-            }
-
-        }
-    }
-  learner_created: false
 - name: src/antifraud/web/dto/ChangeRoleDto.java
   visible: true
   learner_created: true
 - name: src/antifraud/web/dto/ChangeAccessto.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/learn/step/18069#comment
+feedback_link: https://hyperskill.org/projects/232/stages/1163/implement#comment
 status: Solved
-feedback:
-  message: Congratulations!
-  time: Tue, 16 Aug 2022 11:21:29 UTC
 record: 2

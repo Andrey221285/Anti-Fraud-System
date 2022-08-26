@@ -77,7 +77,9 @@ files:
 
 
     import antifraud.mappers.UserDTOMapper;
+    import antifraud.persistence.model.SuspiciousIp;
     import antifraud.persistence.model.User;
+    import antifraud.web.controller.service.AntiFraudService;
     import antifraud.web.controller.service.TransactionService;
     import antifraud.web.controller.service.UserService;
     import antifraud.web.dto.*;
@@ -98,6 +100,8 @@ files:
         UserService userService;
         @Autowired
         TransactionService transactionService;
+        @Autowired
+        AntiFraudService antiFraudService;
 
         @PostMapping("/api/antifraud/transaction")
         public ResponseEntity<?> addTransaction(@Valid @RequestBody TransactionDto transactionDto) {
@@ -148,10 +152,23 @@ files:
 
         }
 
+        @PostMapping("/api/antifraud/suspicious-ip")
+        public ResponseEntity<?> addSuspiciousIp(@RequestBody SuspiciousIpDto suspiciousIpDto){
+            return new ResponseEntity<SuspiciousIp>(antiFraudService.addSuspiciousIp(suspiciousIpDto) ,HttpStatus.OK);
+        }
 
+        @DeleteMapping("/api/antifraud/suspicious-ip/{ip}")
+        public ResponseEntity<?> delSuspiciousIp(@PathVariable String ip){
+            antiFraudService.deleteIp(ip);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("status", String.format("IP %s successfully removed!", ip));
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        }
 
-
-
+        @GetMapping("/api/antifraud/suspicious-ip")
+        public ResponseEntity<List<SuspiciousIp>> getIPs(){
+            return new ResponseEntity<>(antiFraudService.getIps(), HttpStatus.OK);
+        }
     }
   learner_created: false
 - name: src/antifraud/web/dto/TransactionDto.java
@@ -380,11 +397,13 @@ files:
                     .and()
                     .authorizeRequests() // manage access
                     .mvcMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
-                    .mvcMatchers(HttpMethod.DELETE, "/api/auth/user").hasRole(UserService.ROLES.ADMINISTRATOR.name())
+                    .mvcMatchers(HttpMethod.DELETE, "/api/auth/user/**").hasRole(UserService.ROLES.ADMINISTRATOR.name())
                     .mvcMatchers(HttpMethod.PUT, "/api/auth/role").hasRole(UserService.ROLES.ADMINISTRATOR.name())
                     .mvcMatchers(HttpMethod.PUT, "/api/auth/access").hasRole(UserService.ROLES.ADMINISTRATOR.name())
                     .mvcMatchers(HttpMethod.GET, "/api/auth/list").hasAnyRole(UserService.ROLES.ADMINISTRATOR.name(),UserService.ROLES.SUPPORT.name() )
-                    .mvcMatchers("/actuator/shutdown").permitAll() // needs to run test
+                    .mvcMatchers(HttpMethod.POST, "/api/antifraud/transaction").hasRole(UserService.ROLES.MERCHANT.name() )
+                    .mvcMatchers( "/api/antifraud/suspicious-ip","/api/antifraud/suspicious-ip/**").hasRole(UserService.ROLES.SUPPORT.name() )
+                    .antMatchers("/actuator/shutdown").permitAll() // needs to run test
 
                     // other matchers
                     .and()
@@ -504,7 +523,7 @@ files:
     public class User {
 
         @Id
-        @Column(unique = true, nullable = false)
+        @Column
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
 
@@ -723,6 +742,164 @@ files:
         @NotBlank
         private String operation;
 
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/SuspiciousIpDto.java
+  visible: true
+  text: |+
+    package antifraud.web.dto;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class SuspiciousIpDto {
+
+        private String ip;
+    }
+
+  learner_created: false
+- name: src/antifraud/persistence/model/SuspiciousIp.java
+  visible: true
+  text: |
+    package antifraud.persistence.model;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    import javax.persistence.*;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Entity
+    @Table(name = "suspicious_ip")
+    public class SuspiciousIp {
+        @Id
+        @Column
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long id;
+        @Column
+        private String ip;
+    }
+  learner_created: false
+- name: src/antifraud/web/controller/service/AntiFraudService.java
+  visible: true
+  text: |
+    package antifraud.web.controller.service;
+
+    import antifraud.mappers.SuspiciousIpDtoMapper;
+    import antifraud.persistence.dao.SuspiciousIpRepository;
+    import antifraud.persistence.model.SuspiciousIp;
+    import antifraud.web.dto.SuspiciousIpDto;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+
+    import java.util.List;
+
+    @Service
+    public class AntiFraudService {
+        @Autowired
+        SuspiciousIpRepository suspiciousIpRepository;
+        @Autowired
+        SuspiciousIpDtoMapper suspiciousIpDtoMapper;
+
+        public SuspiciousIp addSuspiciousIp(SuspiciousIpDto suspiciousIpDto) {
+            SuspiciousIp suspiciousIp = suspiciousIpRepository.findByIp(suspiciousIpDto.getIp());
+
+            if (suspiciousIp != null){
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "IP is already in the database");
+            }
+
+            SuspiciousIp newSuspiciousIp = suspiciousIpDtoMapper.toEntity(suspiciousIpDto);
+            suspiciousIpRepository.save(newSuspiciousIp);
+            return newSuspiciousIp;
+        }
+
+
+        public boolean deleteIp(String ip) {
+            SuspiciousIp suspiciousIp = suspiciousIpRepository.findByIp(ip);
+            if (suspiciousIp!= null){
+                suspiciousIpRepository.delete(suspiciousIp);
+                return true;
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+            }
+
+        }
+
+        public List<SuspiciousIp> getIps() {
+            return suspiciousIpRepository.findAll();
+        }
+    }
+  learner_created: false
+- name: src/antifraud/persistence/dao/SuspiciousIpRepository.java
+  visible: true
+  text: |
+    package antifraud.persistence.dao;
+
+    import antifraud.persistence.model.SuspiciousIp;
+    import org.springframework.data.jpa.repository.JpaRepository;
+
+    public interface SuspiciousIpRepository extends JpaRepository<SuspiciousIp, Long> {
+
+        SuspiciousIp findByIp(String ip);
+
+
+    }
+  learner_created: false
+- name: src/antifraud/mappers/SuspiciousIpDtoMapper.java
+  visible: true
+  text: |
+    package antifraud.mappers;
+
+    import antifraud.persistence.model.SuspiciousIp;
+    import antifraud.web.dto.SuspiciousIpDto;
+    import org.mapstruct.Mapper;
+
+    @Mapper(componentModel = "spring")
+    public interface SuspiciousIpDtoMapper {
+
+        SuspiciousIp toEntity (SuspiciousIpDto suspiciousIpDto);
+    }
+  learner_created: false
+- name: src/generated/antifraud/mappers/SuspiciousIpDtoMapperImpl.java
+  visible: true
+  text: |
+    package antifraud.mappers;
+
+    import antifraud.persistence.model.SuspiciousIp;
+    import antifraud.web.dto.SuspiciousIpDto;
+    import javax.annotation.processing.Generated;
+    import org.springframework.stereotype.Component;
+
+    @Generated(
+        value = "org.mapstruct.ap.MappingProcessor",
+        date = "2022-08-23T18:27:39+0700",
+        comments = "version: 1.5.1.Final, compiler: javac, environment: Java 18.0.1.1 (Oracle Corporation)"
+    )
+    @Component
+    public class SuspiciousIpDtoMapperImpl implements SuspiciousIpDtoMapper {
+
+        @Override
+        public SuspiciousIp toEntity(SuspiciousIpDto suspiciousIpDto) {
+            if ( suspiciousIpDto == null ) {
+                return null;
+            }
+
+            SuspiciousIp suspiciousIp = new SuspiciousIp();
+
+            suspiciousIp.setIp( suspiciousIpDto.getIp() );
+
+            return suspiciousIp;
+        }
     }
   learner_created: false
 - name: test/AntiFraudTest.java
@@ -2671,6 +2848,6 @@ files:
         };
     }
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/18072#comment
+feedback_link: https://hyperskill.org/projects/232/stages/1166/implement#comment
 status: Unchecked
 record: -1

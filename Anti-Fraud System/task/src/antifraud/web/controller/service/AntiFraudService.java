@@ -1,8 +1,11 @@
 package antifraud.web.controller.service;
 
 import antifraud.mappers.SuspiciousIpDtoMapper;
+import antifraud.persistence.dao.StolenCardRepository;
 import antifraud.persistence.dao.SuspiciousIpRepository;
+import antifraud.persistence.model.StolenCard;
 import antifraud.persistence.model.SuspiciousIp;
+import antifraud.web.dto.StolenCardDto;
 import antifraud.web.dto.SuspiciousIpDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +20,8 @@ public class AntiFraudService {
     SuspiciousIpRepository suspiciousIpRepository;
     @Autowired
     SuspiciousIpDtoMapper suspiciousIpDtoMapper;
+    @Autowired
+    StolenCardRepository stolenCardRepository;
 
     public SuspiciousIp addSuspiciousIp(SuspiciousIpDto suspiciousIpDto) {
         SuspiciousIp suspiciousIp = suspiciousIpRepository.findByIp(suspiciousIpDto.getIp());
@@ -45,5 +50,33 @@ public class AntiFraudService {
 
     public List<SuspiciousIp> getIps() {
         return suspiciousIpRepository.findAll();
+    }
+
+    public StolenCard addStolenCard(StolenCardDto stolenCardDto) {
+        StolenCard stolenCard = stolenCardRepository.findByNumber(stolenCardDto.getNumber());
+
+        if (stolenCard != null){
+            throw  new ResponseStatusException(HttpStatus.CONFLICT, "такая карта уже существует");
+        }
+
+        StolenCard stolenCardNew = new StolenCard();
+        stolenCardNew.setNumber(stolenCardDto.getNumber());
+        stolenCardRepository.save(stolenCardNew);
+        return stolenCardNew;
+
+    }
+
+    public List<StolenCard> getStolenCards() {
+    return stolenCardRepository.findAll();
+    }
+
+    public boolean deleteStrolencard(String number) {
+        StolenCard stolenCard = stolenCardRepository.findByNumber(number);
+        if (stolenCard != null){
+            stolenCardRepository.delete(stolenCard);
+            return true;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 }

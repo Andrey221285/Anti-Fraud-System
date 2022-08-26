@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29db305e-04ee-4ef6-9c56-7566570108cc" name="Changes" comment="" />
+    <list default="true" id="be78c133-6efb-4b08-bfaa-1fb06724723d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -48,7 +48,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectId" id="2DORoxLrEzGnRVE0RKrIoH6Nbaa" />
+  <component name="ProjectId" id="2DqQVFUSYTBqzjaGdBZ4dxIj46q" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -58,14 +58,18 @@
     "Edu.Yaml.Migrate": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "last_opened_file_path": "C:/git/Anti-Fraud System4",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.44066238",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
     "show.inlinked.gradle.project.popup": "false"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="AntiFraudApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="antifraud.AntiFraudApplication" />
-      <module name="Anti-Fraud_System4.Anti-Fraud_System-task.main" />
+      <module name="Anti-Fraud_System5.Anti-Fraud_System-task.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="antifraud.*" />
@@ -96,11 +100,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="29db305e-04ee-4ef6-9c56-7566570108cc" name="Changes" comment="" />
-      <created>1660568322753</created>
+      <changelist id="be78c133-6efb-4b08-bfaa-1fb06724723d" name="Changes" comment="" />
+      <created>1661424156667</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1660568322753</updated>
+      <updated>1661424156667</updated>
     </task>
     <servers />
   </component>

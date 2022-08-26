@@ -2,6 +2,7 @@ package antifraud.web.controller;
 
 
 import antifraud.mappers.UserDTOMapper;
+import antifraud.persistence.model.StolenCard;
 import antifraud.persistence.model.SuspiciousIp;
 import antifraud.persistence.model.User;
 import antifraud.web.controller.service.AntiFraudService;
@@ -93,5 +94,23 @@ public class ApiController {
     @GetMapping("/api/antifraud/suspicious-ip")
     public ResponseEntity<List<SuspiciousIp>> getIPs(){
         return new ResponseEntity<>(antiFraudService.getIps(), HttpStatus.OK);
+    }
+
+    @PostMapping("/api/antifraud/stolencard")
+    public  ResponseEntity<?> addStrolencard(@Valid @RequestBody StolenCardDto stolenCardDto){
+       return new ResponseEntity<>( antiFraudService.addStolenCard(stolenCardDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/api/antifraud/stolencard")
+    public  ResponseEntity<List<StolenCard>> getStrolencards(){
+       return new ResponseEntity<>( antiFraudService.getStolenCards(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/api/antifraud/stolencard/{number}")
+    public ResponseEntity<?> delStrolencard(@PathVariable String number){
+        antiFraudService.deleteStrolencard(number);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", String.format("Card %s successfully removed!", number));
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }
