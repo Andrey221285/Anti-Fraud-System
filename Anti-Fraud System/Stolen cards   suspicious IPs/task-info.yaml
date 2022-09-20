@@ -1764,13 +1764,37 @@ files:
 
     }
   learner_created: false
+- name: src/antifraud/validation/IpAddressValidator.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/validation/IpConstraint.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/persistence/model/StolenCard.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/validation/CardConstraint.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/web/dto/StolenCardDto.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/persistence/dao/StolenCardRepository.java
+  visible: true
+  learner_created: true
 - name: src/generated/antifraud/mappers/SuspiciousIpDtoMapperImpl.java
   visible: true
   learner_created: true
 - name: src/antifraud/web/controller/service/AntiFraudService.java
   visible: true
   learner_created: true
+- name: src/antifraud/validation/CardValidator.java
+  visible: true
+  learner_created: true
 - name: src/antifraud/web/dto/SuspiciousIpDto.java
+  visible: true
+  learner_created: true
+- name: src/generated/antifraud/mappers/UserDTOMapperImpl.java
   visible: true
   learner_created: true
 - name: src/antifraud/persistence/model/SuspiciousIp.java
@@ -1782,154 +1806,9 @@ files:
 - name: src/antifraud/mappers/SuspiciousIpDtoMapper.java
   visible: true
   learner_created: true
-- name: src/antifraud/validation/IpAddressValidator.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/validation/IpConstraint.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/validation/CardConstraint.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/validation/CardValidator.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/web/dto/StolenCardDto.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/persistence/model/StolenCard.java
-  visible: true
-  learner_created: true
-- name: src/antifraud/persistence/dao/StolenCardRepository.java
-  visible: true
-  learner_created: true
-- name: src/generated/antifraud/mappers/UserDTOMapperImpl.java
+- name: src/antifraud/web/dto/ResponseAddTransactionDto.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/232/stages/1164/implement#comment
 status: Failed
-feedback:
-  message: "Exception in test #1\n\nCannot start Spring application\n\norg.springframework.beans.factory.UnsatisfiedDependencyException:\
-    \ Error creating bean with name &#39;apiController&#39;: Unsatisfied dependency\
-    \ expressed through field &#39;userDTOMapper&#39;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException:\
-    \ No qualifying bean of type &#39;antifraud.mappers.UserDTOMapper&#39; available:\
-    \ expected at least 1 bean which qualifies as autowire candidate. Dependency annotations:\
-    \ {@org.springframework.beans.factory.annotation.Autowired(required=true)}\r\n\
-    \tat org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)\r\
-    \n\tat org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)\r\
-    \n\tat org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)\r\
-    \n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)\r\
-    \n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)\r\
-    \n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)\r\
-    \n\tat org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)\r\
-    \n\tat org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)\r\
-    \n\tat org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)\r\
-    \n\tat org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)\r\
-    \n\tat org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)\r\
-    \n\tat org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)\r\
-    \n\tat org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)\r\
-    \n\tat org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)\r\
-    \n\tat org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)\r\
-    \n\tat org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)\r\
-    \n\tat org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)\r\
-    \n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:315)\r\
-    \n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)\r\
-    \n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)\r\
-    \n\tat antifraud.AntiFraudApplication.main(AntiFraudApplication.java:9)\n\nPlease\
-    \ find below the output of your program during this failed test.\n\n---\n\nstdout:\n\
-    .   ____          _            __ _ _\n /\\\\ / ___&#39;_ __ _ _(_)_ __  __ _\
-    \ \\ \\ \\ \\\n( ( )\\___ | &#39;_ | &#39;_| | &#39;_ \\/ _` | \\ \\ \\ \\\n \\\
-    \\/  ___)| |_)| | | | | || (_| |  ) ) ) )\n  &#39;  |____| .__|_| |_|_| |_\\__,\
-    \ | / / / /\n =========|_|==============|___/=/_/_/_/\n :: Spring Boot ::    \
-    \    (v2.3.1.RELEASE)\n\n2022-08-26 12:24:27.035  INFO 1524 --- [    Test worker]\
-    \ antifraud.AntiFraudApplication           : Starting AntiFraudApplication on\
-    \ WIN-V2VIIKH07VR with PID 1524 (started by user in C:\\git\\Anti-Fraud System5\\\
-    Anti-Fraud System\\task)\n2022-08-26 12:24:27.038  INFO 1524 --- [    Test worker]\
-    \ antifraud.AntiFraudApplication           : No active profile set, falling back\
-    \ to default profiles: default\n2022-08-26 12:24:27.925  INFO 1524 --- [    Test\
-    \ worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data\
-    \ JPA repositories in DEFERRED mode.\n2022-08-26 12:24:27.991  INFO 1524 --- [\
-    \    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data\
-    \ repository scanning in 57ms. Found 3 JPA repository interfaces.\n2022-08-26\
-    \ 12:24:28.504  INFO 1524 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
-    \  : Tomcat initialized with port(s): 8080 (http)\n2022-08-26 12:24:28.514  INFO\
-    \ 1524 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting\
-    \ service [Tomcat]\n2022-08-26 12:24:28.514  INFO 1524 --- [    Test worker] org.apache.catalina.core.StandardEngine\
-    \  : Starting Servlet engine: [Apache Tomcat/9.0.36]\n2022-08-26 12:24:28.594\
-    \  INFO 1524 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       :\
-    \ Initializing Spring embedded WebApplicationContext\n2022-08-26 12:24:28.594\
-    \  INFO 1524 --- [    Test worker] w.s.c.ServletWebServerApplicationContext :\
-    \ Root WebApplicationContext: initialization completed in 1518 ms\n2022-08-26\
-    \ 12:24:28.696  INFO 1524 --- [    Test worker] com.zaxxer.hikari.HikariDataSource\
-    \       : HikariPool-1 - Starting...\n2022-08-26 12:24:28.845  INFO 1524 --- [\
-    \    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start\
-    \ completed.\n2022-08-26 12:24:28.851  INFO 1524 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration\
-    \    : H2 console available at &#39;/h2&#39;. Database available at &#39;jdbc:h2:file:../service_db&#39;\n\
-    2022-08-26 12:24:28.962  INFO 1524 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor\
-    \  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;\n2022-08-26\
-    \ 12:24:29.028  INFO 1524 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper\
-    \  : HHH000204: Processing PersistenceUnitInfo [name: default]\n2022-08-26 12:24:29.052\
-    \  WARN 1524 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration :\
-    \ spring.jpa.open-in-view is enabled by default. Therefore, database queries may\
-    \ be performed during view rendering. Explicitly configure spring.jpa.open-in-view\
-    \ to disable this warning\n2022-08-26 12:24:29.090  INFO 1524 --- [         task-1]\
-    \ org.hibernate.Version                    : HHH000412: Hibernate ORM core version\
-    \ 5.4.17.Final\n2022-08-26 12:24:29.100  WARN 1524 --- [    Test worker] ConfigServletWebServerApplicationContext\
-    \ : Exception encountered during context initialization - cancelling refresh attempt:\
-    \ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating\
-    \ bean with name &#39;apiController&#39;: Unsatisfied dependency expressed through\
-    \ field &#39;userDTOMapper&#39;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException:\
-    \ No qualifying bean of type &#39;antifraud.mappers.UserDTOMapper&#39; available:\
-    \ expected at least 1 bean which qualifies as autowire candidate. Dependency annotations:\
-    \ {@org.springframework.beans.factory.annotation.Autowired(required=true)}\n2022-08-26\
-    \ 12:24:29.101  INFO 1524 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean\
-    \ : Closing JPA EntityManagerFactory for persistence unit &#39;default&#39;\n\
-    2022-08-26 12:24:29.242  INFO 1524 --- [         task-1] o.hibernate.annotations.common.Version\
-    \   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}\n2022-08-26 12:24:29.336\
-    \  INFO 1524 --- [         task-1] org.hibernate.dialect.Dialect            :\
-    \ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect\nHibernate: create\
-    \ table stolen_card (id bigint not null, number varchar(255), primary key (id))\n\
-    Hibernate: create table suspicious_ip (id bigint not null, ip varchar(255), primary\
-    \ key (id))\nHibernate: create table user_account (id bigint not null, is_locked\
-    \ boolean, name varchar(255), password varchar(255), role integer, user_name varchar(255),\
-    \ primary key (id))\nHibernate: create sequence hibernate_sequence start with\
-    \ 1 increment by 1\n2022-08-26 12:24:29.917  INFO 1524 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator\
-    \       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]\n\
-    2022-08-26 12:24:29.925  INFO 1524 --- [         task-1] j.LocalContainerEntityManagerFactoryBean\
-    \ : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;\n\
-    2022-08-26 12:24:29.928  INFO 1524 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor\
-    \  : Shutting down ExecutorService &#39;applicationTaskExecutor&#39;\n2022-08-26\
-    \ 12:24:29.930  INFO 1524 --- [    Test worker] com.zaxxer.hikari.HikariDataSource\
-    \       : HikariPool-1 - Shutdown initiated...\n2022-08-26 12:24:29.952  INFO\
-    \ 1524 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1\
-    \ - Shutdown completed.\n2022-08-26 12:24:29.954  INFO 1524 --- [    Test worker]\
-    \ o.apache.catalina.core.StandardService   : Stopping service [Tomcat]\n2022-08-26\
-    \ 12:24:29.969  INFO 1524 --- [    Test worker] ConditionEvaluationReportLoggingListener\
-    \ : \n\nError starting ApplicationContext. To display the conditions report re-run\
-    \ your application with &#39;debug&#39; enabled.\n2022-08-26 12:24:30.101 ERROR\
-    \ 1524 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : \n\n***************************\n\
-    APPLICATION FAILED TO START\n***************************\n\nDescription:\n\nField\
-    \ userDTOMapper in antifraud.web.controller.ApiController required a bean of type\
-    \ &#39;antifraud.mappers.UserDTOMapper&#39; that could not be found.\n\nThe injection\
-    \ point has the following annotations:\n\t- @org.springframework.beans.factory.annotation.Autowired(required=true)\n\
-    \n\nAction:\n\nConsider defining a bean of type &#39;antifraud.mappers.UserDTOMapper&#39;\
-    \ in your configuration.\n\nstderr:\nException in thread &quot;task-2&quot; org.springframework.beans.factory.BeanCreationNotAllowedException:\
-    \ Error creating bean with name &#39;delegatingApplicationListener&#39;: Singleton\
-    \ bean creation not allowed while singletons of this factory are in destruction\
-    \ (Do not request a bean from a BeanFactory in a destroy method implementation!)\n\
-    \tat org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:212)\n\
-    \tat org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)\n\
-    \tat org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)\n\
-    \tat org.springframework.context.event.AbstractApplicationEventMulticaster.retrieveApplicationListeners(AbstractApplicationEventMulticaster.java:245)\n\
-    \tat org.springframework.context.event.AbstractApplicationEventMulticaster.getApplicationListeners(AbstractApplicationEventMulticaster.java:197)\n\
-    \tat org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:134)\n\
-    \tat org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:404)\n\
-    \tat org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:361)\n\
-    \tat org.springframework.boot.autoconfigure.orm.jpa.DataSourceInitializedPublisher.publishEventIfRequired(DataSourceInitializedPublisher.java:99)\n\
-    \tat org.springframework.boot.autoconfigure.orm.jpa.DataSourceInitializedPublisher.access$100(DataSourceInitializedPublisher.java:50)\n\
-    \tat org.springframework.boot.autoconfigure.orm.jpa.DataSourceInitializedPublisher$DataSourceSchemaCreatedPublisher.lambda$postProcessEntityManagerFactory$0(DataSourceInitializedPublisher.java:200)\n\
-    \tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)\n\
-    \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)\n\
-    \tat java.base/java.lang.Thread.run(Thread.java:833)"
-  time: Fri, 26 Aug 2022 05:24:30 UTC
 record: 3

@@ -29,21 +29,29 @@ files:
     repositories {
         mavenCentral()
     }
-
+    ext {
+        mapstructVersion = "1.5.2.Final"
+        lombokVersion = "1.18.24"
+        lombokMapstructBindingVersion = "0.2.0"
+    }
     sourceSets.main.resources.srcDirs = ["src/resources"]
 
     dependencies {
+        implementation "org.mapstruct:mapstruct:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+        testImplementation "org.mapstruct:mapstruct:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
         implementation 'org.springframework.boot:spring-boot-starter'
         implementation 'org.springframework.boot:spring-boot-starter-actuator'
         implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.1.0.Final'
+        implementation group: 'org.hibernate', name: 'hibernate-validator', version: '7.0.5.Final'
         implementation 'org.springframework.boot:spring-boot-starter-security'
         implementation 'org.springframework.boot:spring-boot-starter-jdbc'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         runtimeOnly 'com.h2database:h2'
         // https://mvnrepository.com/artifact/org.mapstruct/mapstruct
-        implementation 'org.mapstruct:mapstruct:1.5.1.Final'
-        annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.1.Final'
+       // implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+       // implementation 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+        annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}", "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+        testAnnotationProcessor  "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}", "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
     }
   learner_created: false
 - name: src/resources/application.properties
@@ -77,6 +85,7 @@ files:
 
 
     import antifraud.mappers.UserDTOMapper;
+    import antifraud.persistence.model.StolenCard;
     import antifraud.persistence.model.SuspiciousIp;
     import antifraud.persistence.model.User;
     import antifraud.web.controller.service.AntiFraudService;
@@ -153,7 +162,7 @@ files:
         }
 
         @PostMapping("/api/antifraud/suspicious-ip")
-        public ResponseEntity<?> addSuspiciousIp(@RequestBody SuspiciousIpDto suspiciousIpDto){
+        public ResponseEntity<?> addSuspiciousIp(@Valid @RequestBody SuspiciousIpDto suspiciousIpDto){
             return new ResponseEntity<SuspiciousIp>(antiFraudService.addSuspiciousIp(suspiciousIpDto) ,HttpStatus.OK);
         }
 
@@ -168,6 +177,24 @@ files:
         @GetMapping("/api/antifraud/suspicious-ip")
         public ResponseEntity<List<SuspiciousIp>> getIPs(){
             return new ResponseEntity<>(antiFraudService.getIps(), HttpStatus.OK);
+        }
+
+        @PostMapping("/api/antifraud/stolencard")
+        public  ResponseEntity<?> addStrolencard(@Valid @RequestBody StolenCardDto stolenCardDto){
+           return new ResponseEntity<>( antiFraudService.addStolenCard(stolenCardDto), HttpStatus.OK);
+        }
+
+        @GetMapping("/api/antifraud/stolencard")
+        public  ResponseEntity<List<StolenCard>> getStrolencards(){
+           return new ResponseEntity<>( antiFraudService.getStolenCards(), HttpStatus.OK);
+        }
+
+        @DeleteMapping("/api/antifraud/stolencard/{number}")
+        public ResponseEntity<?> delStrolencard(@PathVariable String number){
+            antiFraudService.deleteStrolencard(number);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("status", String.format("Card %s successfully removed!", number));
+            return new ResponseEntity<>(map, HttpStatus.OK);
         }
     }
   learner_created: false
@@ -403,6 +430,7 @@ files:
                     .mvcMatchers(HttpMethod.GET, "/api/auth/list").hasAnyRole(UserService.ROLES.ADMINISTRATOR.name(),UserService.ROLES.SUPPORT.name() )
                     .mvcMatchers(HttpMethod.POST, "/api/antifraud/transaction").hasRole(UserService.ROLES.MERCHANT.name() )
                     .mvcMatchers( "/api/antifraud/suspicious-ip","/api/antifraud/suspicious-ip/**").hasRole(UserService.ROLES.SUPPORT.name() )
+                    .mvcMatchers( "/api/antifraud/stolencard","/api/antifraud/stolencard/**").hasRole(UserService.ROLES.SUPPORT.name() )
                     .antMatchers("/actuator/shutdown").permitAll() // needs to run test
 
                     // other matchers
@@ -505,7 +533,7 @@ files:
   learner_created: false
 - name: src/antifraud/persistence/model/User.java
   visible: true
-  text: |
+  text: |+
     package antifraud.persistence.model;
 
     import antifraud.web.controller.service.UserService;
@@ -542,6 +570,8 @@ files:
         @Column
         private boolean isLocked;
     }
+
+
   learner_created: false
 - name: src/antifraud/mappers/UserDTOMapper.java
   visible: true
@@ -744,25 +774,61 @@ files:
 
     }
   learner_created: false
-- name: src/antifraud/web/dto/SuspiciousIpDto.java
+- name: src/antifraud/validation/IpAddressValidator.java
   visible: true
-  text: |+
-    package antifraud.web.dto;
+  text: |-
+    package antifraud.validation;
 
-    import lombok.AllArgsConstructor;
-    import lombok.Data;
-    import lombok.NoArgsConstructor;
+    import javax.validation.ConstraintValidator;
+    import javax.validation.ConstraintValidatorContext;
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class SuspiciousIpDto {
+    public class IpAddressValidator implements ConstraintValidator<IpConstraint, String> {
+        @Override
+        public boolean isValid(String value, ConstraintValidatorContext context) {
+            String [] arr = value.split("\\.");
+            if (arr.length< 4){
+                return false;
+            }
 
-        private String ip;
+            for (String s  : arr){
+                try {
+                    int i = Integer.parseInt(s);
+                    if (i<0 || i>255){
+                        return false;
+                    }
+                } catch (Exception e) {
+                   return false;
+                }
+            }
+
+            return true;
+        }
     }
-
   learner_created: false
-- name: src/antifraud/persistence/model/SuspiciousIp.java
+- name: src/antifraud/validation/IpConstraint.java
+  visible: true
+  text: |
+    package antifraud.validation;
+
+
+    import antifraud.web.dto.SuspiciousIpDto;
+
+    import javax.validation.Constraint;
+    import javax.validation.Payload;
+    import java.lang.annotation.*;
+
+    @Documented
+    @Constraint(validatedBy = IpAddressValidator.class)
+    @Target( { ElementType.METHOD, ElementType.FIELD })
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface IpConstraint {
+
+        String message() default "Invalid phone number";
+        Class<?>[] groups() default {};
+        Class<? extends Payload>[] payload() default {};
+    }
+  learner_created: false
+- name: src/antifraud/persistence/model/StolenCard.java
   visible: true
   text: |
     package antifraud.persistence.model;
@@ -777,14 +843,99 @@ files:
     @NoArgsConstructor
     @AllArgsConstructor
     @Entity
-    @Table(name = "suspicious_ip")
-    public class SuspiciousIp {
+    @Table(name = "stolen_card")
+    public class StolenCard {
         @Id
         @Column
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
+
         @Column
-        private String ip;
+        private String number;
+    }
+  learner_created: false
+- name: src/antifraud/validation/CardConstraint.java
+  visible: true
+  text: |
+    package antifraud.validation;
+
+    import javax.validation.Constraint;
+    import javax.validation.Payload;
+    import java.lang.annotation.*;
+
+    @Documented
+    @Constraint(validatedBy = CardValidator.class)
+    @Target( { ElementType.METHOD, ElementType.FIELD })
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface CardConstraint {
+        String message() default "Invalid card number";
+        Class<?>[] groups() default {};
+        Class<? extends Payload>[] payload() default {};
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/StolenCardDto.java
+  visible: true
+  text: |
+    package antifraud.web.dto;
+
+    import antifraud.validation.CardConstraint;
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class StolenCardDto {
+
+
+        @CardConstraint
+        private String number;
+    }
+  learner_created: false
+- name: src/antifraud/persistence/dao/StolenCardRepository.java
+  visible: true
+  text: |
+    package antifraud.persistence.dao;
+
+    import antifraud.persistence.model.StolenCard;
+    import org.springframework.data.jpa.repository.JpaRepository;
+
+    public interface StolenCardRepository extends JpaRepository<StolenCard, Long> {
+
+        StolenCard findByNumber(String number);
+    }
+  learner_created: false
+- name: src/generated/antifraud/mappers/SuspiciousIpDtoMapperImpl.java
+  visible: true
+  text: |
+    package antifraud.mappers;
+
+    import antifraud.persistence.model.SuspiciousIp;
+    import antifraud.web.dto.SuspiciousIpDto;
+    import javax.annotation.processing.Generated;
+    import org.springframework.stereotype.Component;
+
+    @Generated(
+        value = "org.mapstruct.ap.MappingProcessor",
+        date = "2022-09-20T16:47:29+0700",
+        comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Eclipse Adoptium)"
+    )
+    @Component
+    public class SuspiciousIpDtoMapperImpl implements SuspiciousIpDtoMapper {
+
+        @Override
+        public SuspiciousIp toEntity(SuspiciousIpDto suspiciousIpDto) {
+            if ( suspiciousIpDto == null ) {
+                return null;
+            }
+
+            SuspiciousIp suspiciousIp = new SuspiciousIp();
+
+            suspiciousIp.setIp( suspiciousIpDto.getIp() );
+
+            return suspiciousIp;
+        }
     }
   learner_created: false
 - name: src/antifraud/web/controller/service/AntiFraudService.java
@@ -793,8 +944,11 @@ files:
     package antifraud.web.controller.service;
 
     import antifraud.mappers.SuspiciousIpDtoMapper;
+    import antifraud.persistence.dao.StolenCardRepository;
     import antifraud.persistence.dao.SuspiciousIpRepository;
+    import antifraud.persistence.model.StolenCard;
     import antifraud.persistence.model.SuspiciousIp;
+    import antifraud.web.dto.StolenCardDto;
     import antifraud.web.dto.SuspiciousIpDto;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.HttpStatus;
@@ -809,6 +963,8 @@ files:
         SuspiciousIpRepository suspiciousIpRepository;
         @Autowired
         SuspiciousIpDtoMapper suspiciousIpDtoMapper;
+        @Autowired
+        StolenCardRepository stolenCardRepository;
 
         public SuspiciousIp addSuspiciousIp(SuspiciousIpDto suspiciousIpDto) {
             SuspiciousIp suspiciousIp = suspiciousIpRepository.findByIp(suspiciousIpDto.getIp());
@@ -838,6 +994,112 @@ files:
         public List<SuspiciousIp> getIps() {
             return suspiciousIpRepository.findAll();
         }
+
+        public StolenCard addStolenCard(StolenCardDto stolenCardDto) {
+            StolenCard stolenCard = stolenCardRepository.findByNumber(stolenCardDto.getNumber());
+
+            if (stolenCard != null){
+                throw  new ResponseStatusException(HttpStatus.CONFLICT, "такая карта уже существует");
+            }
+
+            StolenCard stolenCardNew = new StolenCard();
+            stolenCardNew.setNumber(stolenCardDto.getNumber());
+            stolenCardRepository.save(stolenCardNew);
+            return stolenCardNew;
+
+        }
+
+        public List<StolenCard> getStolenCards() {
+        return stolenCardRepository.findAll();
+        }
+
+        public boolean deleteStrolencard(String number) {
+            StolenCard stolenCard = stolenCardRepository.findByNumber(number);
+            if (stolenCard != null){
+                stolenCardRepository.delete(stolenCard);
+                return true;
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+        }
+    }
+  learner_created: false
+- name: src/antifraud/validation/CardValidator.java
+  visible: true
+  text: |
+    package antifraud.validation;
+
+    import javax.validation.ConstraintValidator;
+    import javax.validation.ConstraintValidatorContext;
+
+    public class CardValidator implements ConstraintValidator<CardConstraint, String> {
+
+        @Override
+        public boolean isValid(String value, ConstraintValidatorContext context) {
+            return luhnTest(value);
+        }
+
+        public static boolean luhnTest(String number){
+            int s1 = 0, s2 = 0;
+            String reverse = new StringBuffer(number).reverse().toString();
+            for(int i = 0 ;i < reverse.length();i++){
+                int digit = Character.digit(reverse.charAt(i), 10);
+                if(i % 2 == 0){//this is for odd digits, they are 1-indexed in the algorithm
+                    s1 += digit;
+                }else{//add 2 * digit for 0-4, add 2 * digit - 9 for 5-9
+                    s2 += 2 * digit;
+                    if(digit >= 5){
+                        s2 -= 9;
+                    }
+                }
+            }
+            return (s1 + s2) % 10 == 0;
+        }
+    }
+  learner_created: false
+- name: src/antifraud/web/dto/SuspiciousIpDto.java
+  visible: true
+  text: |+
+    package antifraud.web.dto;
+
+    import antifraud.validation.IpConstraint;
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class SuspiciousIpDto {
+
+        @IpConstraint
+        private String ip;
+    }
+
+  learner_created: false
+- name: src/antifraud/persistence/model/SuspiciousIp.java
+  visible: true
+  text: |
+    package antifraud.persistence.model;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    import javax.persistence.*;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Entity
+    @Table(name = "suspicious_ip")
+    public class SuspiciousIp {
+        @Id
+        @Column
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long id;
+        @Column
+        private String ip;
     }
   learner_created: false
 - name: src/antifraud/persistence/dao/SuspiciousIpRepository.java
@@ -863,6 +1125,7 @@ files:
     import antifraud.persistence.model.SuspiciousIp;
     import antifraud.web.dto.SuspiciousIpDto;
     import org.mapstruct.Mapper;
+    import org.mapstruct.Mapping;
 
     @Mapper(componentModel = "spring")
     public interface SuspiciousIpDtoMapper {
@@ -870,35 +1133,70 @@ files:
         SuspiciousIp toEntity (SuspiciousIpDto suspiciousIpDto);
     }
   learner_created: false
-- name: src/generated/antifraud/mappers/SuspiciousIpDtoMapperImpl.java
+- name: src/generated/antifraud/mappers/UserDTOMapperImpl.java
   visible: true
   text: |
     package antifraud.mappers;
 
-    import antifraud.persistence.model.SuspiciousIp;
-    import antifraud.web.dto.SuspiciousIpDto;
+    import antifraud.persistence.model.User;
+    import antifraud.web.dto.ResponseNewUserDto;
+    import antifraud.web.dto.UserDto;
+    import java.util.ArrayList;
+    import java.util.List;
     import javax.annotation.processing.Generated;
     import org.springframework.stereotype.Component;
 
     @Generated(
         value = "org.mapstruct.ap.MappingProcessor",
-        date = "2022-08-23T18:27:39+0700",
-        comments = "version: 1.5.1.Final, compiler: javac, environment: Java 18.0.1.1 (Oracle Corporation)"
+        date = "2022-09-20T16:47:29+0700",
+        comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Eclipse Adoptium)"
     )
     @Component
-    public class SuspiciousIpDtoMapperImpl implements SuspiciousIpDtoMapper {
+    public class UserDTOMapperImpl implements UserDTOMapper {
 
         @Override
-        public SuspiciousIp toEntity(SuspiciousIpDto suspiciousIpDto) {
-            if ( suspiciousIpDto == null ) {
+        public User toUser(UserDto userDto) {
+            if ( userDto == null ) {
                 return null;
             }
 
-            SuspiciousIp suspiciousIp = new SuspiciousIp();
+            User user = new User();
 
-            suspiciousIp.setIp( suspiciousIpDto.getIp() );
+            user.setUserName( userDto.getUsername() );
+            user.setName( userDto.getName() );
+            user.setPassword( userDto.getPassword() );
 
-            return suspiciousIp;
+            return user;
+        }
+
+        @Override
+        public ResponseNewUserDto toResponseUserDto(User User) {
+            if ( User == null ) {
+                return null;
+            }
+
+            ResponseNewUserDto responseNewUserDto = new ResponseNewUserDto();
+
+            responseNewUserDto.setUsername( User.getUserName() );
+            responseNewUserDto.setId( User.getId() );
+            responseNewUserDto.setName( User.getName() );
+            responseNewUserDto.setRole( User.getRole() );
+
+            return responseNewUserDto;
+        }
+
+        @Override
+        public List<ResponseNewUserDto> toUserInfos(List<User> users) {
+            if ( users == null ) {
+                return null;
+            }
+
+            List<ResponseNewUserDto> list = new ArrayList<ResponseNewUserDto>( users.size() );
+            for ( User user : users ) {
+                list.add( toResponseUserDto( user ) );
+            }
+
+            return list;
         }
     }
   learner_created: false

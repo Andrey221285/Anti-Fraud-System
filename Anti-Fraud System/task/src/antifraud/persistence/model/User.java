@@ -34,3 +34,5 @@ public class User {
     @Column
     private boolean isLocked;
 }
+
+

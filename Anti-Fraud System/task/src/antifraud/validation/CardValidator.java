@@ -7,6 +7,11 @@ public class CardValidator implements ConstraintValidator<CardConstraint, String
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
+        if (value == null || value.length() ==0){
+            return false;
+        }
+
+
         return luhnTest(value);
     }
 

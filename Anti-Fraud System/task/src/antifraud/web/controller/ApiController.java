@@ -30,11 +30,8 @@ public class ApiController {
     AntiFraudService antiFraudService;
 
     @PostMapping("/api/antifraud/transaction")
-    public ResponseEntity<?> addTransaction(@Valid @RequestBody TransactionDto transactionDto) {
-        HashMap<String, TransactionService.STATUS> map = new HashMap<>();
-        map.put("result", transactionService.getStatus(transactionDto.getAmount()));
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
+    public ResponseEntity<ResponseAddTransactionDto> addTransaction(@Valid @RequestBody TransactionDto transactionDto) {
+        return ResponseEntity.ok(transactionService.addTransaction(transactionDto));
     }
 
     @PostMapping("/api/auth/user")

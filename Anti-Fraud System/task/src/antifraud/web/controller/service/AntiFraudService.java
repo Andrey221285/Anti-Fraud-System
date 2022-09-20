@@ -17,11 +17,11 @@ import java.util.List;
 @Service
 public class AntiFraudService {
     @Autowired
-    SuspiciousIpRepository suspiciousIpRepository;
+    private SuspiciousIpRepository suspiciousIpRepository;
     @Autowired
-    SuspiciousIpDtoMapper suspiciousIpDtoMapper;
+    private SuspiciousIpDtoMapper suspiciousIpDtoMapper;
     @Autowired
-    StolenCardRepository stolenCardRepository;
+    private StolenCardRepository stolenCardRepository;
 
     public SuspiciousIp addSuspiciousIp(SuspiciousIpDto suspiciousIpDto) {
         SuspiciousIp suspiciousIp = suspiciousIpRepository.findByIp(suspiciousIpDto.getIp());
@@ -78,5 +78,13 @@ public class AntiFraudService {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
+    }
+
+    public boolean isCheckedIp(String ip){
+        return suspiciousIpRepository.findByIp(ip) == null;
+    }
+
+    public boolean isCheckedCard(String number){
+        return stolenCardRepository.findByNumber(number) == null;
     }
 }
