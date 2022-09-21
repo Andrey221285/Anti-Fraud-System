@@ -21,7 +21,7 @@ public class TransactionService {
         STATUS status = null;
 
         if (!antiFraudService.isCheckedCard(transactionDto.getNumber())){
-            list.add("number");
+            list.add("card-number");
         }
         if (!antiFraudService.isCheckedIp(transactionDto.getIp())){
             list.add("ip");
@@ -31,7 +31,8 @@ public class TransactionService {
             status = STATUS.PROHIBITED;
         }
 
-        if (getStatus(transactionDto.getAmount())==STATUS.MANUAL_PROCESSING || getStatus(transactionDto.getAmount())==STATUS.PROHIBITED){
+        if (getStatus(transactionDto.getAmount())==STATUS.MANUAL_PROCESSING
+                ||getStatus(transactionDto.getAmount())==STATUS.PROHIBITED){
             list.add("amount");
         }
 

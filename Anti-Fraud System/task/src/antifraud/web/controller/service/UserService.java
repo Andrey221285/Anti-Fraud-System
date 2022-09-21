@@ -1,6 +1,7 @@
 package antifraud.web.controller.service;
 
 import antifraud.mappers.UserDTOMapper;
+import antifraud.mappers.UserDTOMapperMyImpl;
 import antifraud.persistence.dao.UserRepository;
 import antifraud.persistence.model.User;
 import antifraud.web.dto.ChangeAccessto;
@@ -21,8 +22,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private UserDTOMapper userDTOMapper;
+//    @Autowired
+//    private UserDTOMapperMyImpl userDTOMapper;
 
     @Autowired
     PasswordEncoder encoder;
@@ -32,7 +33,7 @@ public class UserService {
             throw new UserExistException();
         }
 
-        User user = userDTOMapper.toUser(userDto);
+        User user = UserDTOMapperMyImpl.toUser(userDto);
         user.setPassword(encoder.encode(userDto.getPassword()));
 
         if (userRepository.count() == 0){

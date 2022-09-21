@@ -2,9 +2,12 @@ package antifraud.web.controller;
 
 
 import antifraud.mappers.UserDTOMapper;
+import antifraud.mappers.UserDTOMapperMyImpl;
 import antifraud.persistence.model.StolenCard;
 import antifraud.persistence.model.SuspiciousIp;
 import antifraud.persistence.model.User;
+import antifraud.validation.CardConstraint;
+import antifraud.validation.IpConstraint;
 import antifraud.web.controller.service.AntiFraudService;
 import antifraud.web.controller.service.TransactionService;
 import antifraud.web.controller.service.UserService;
@@ -12,16 +15,22 @@ import antifraud.web.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@Validated
+@ControllerAdvice
 public class ApiController {
-    @Autowired
-    UserDTOMapper userDTOMapper;
+//    @Autowired
+//    UserDTOMapperMyImpl userDTOMapper;
     @Autowired
     UserService userService;
     @Autowired
@@ -38,14 +47,14 @@ public class ApiController {
     public ResponseEntity<?> registerUserAccount(@Valid @RequestBody UserDto userDto){
         User user = userService.registerNewUser(userDto);
 
-        ResponseNewUserDto responseNewUserDto = userDTOMapper.toResponseUserDto(user);
+        ResponseNewUserDto responseNewUserDto = UserDTOMapperMyImpl.toResponseUserDto(user);
         return new ResponseEntity<>(responseNewUserDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/api/auth/list")
     public ResponseEntity<?> getUsers (){
         List<User> userList = userService.getAllUsers();
-        return new ResponseEntity<>(userDTOMapper.toUserInfos(userList), HttpStatus.OK);
+        return new ResponseEntity<>(UserDTOMapperMyImpl.toUserInfos(userList), HttpStatus.OK);
     }
 
     @DeleteMapping ("/api/auth/user/{userName}")
@@ -60,7 +69,7 @@ public class ApiController {
     @PutMapping("/api/auth/role")
     public ResponseEntity<?> changeRole(@Valid @RequestBody ChangeRoleDto changeRoleDto){
 
-        ResponseNewUserDto responseNewUserDto = userDTOMapper.toResponseUserDto(userService.changeRole(changeRoleDto));;
+        ResponseNewUserDto responseNewUserDto = UserDTOMapperMyImpl.toResponseUserDto(userService.changeRole(changeRoleDto));;
         return new ResponseEntity<>(responseNewUserDto, HttpStatus.OK);
 
     }
@@ -81,7 +90,7 @@ public class ApiController {
     }
 
     @DeleteMapping("/api/antifraud/suspicious-ip/{ip}")
-    public ResponseEntity<?> delSuspiciousIp(@PathVariable String ip){
+    public ResponseEntity<?> delSuspiciousIp(@PathVariable @IpConstraint String ip){
         antiFraudService.deleteIp(ip);
         HashMap<String, String> map = new HashMap<>();
         map.put("status", String.format("IP %s successfully removed!", ip));
@@ -104,10 +113,15 @@ public class ApiController {
     }
 
     @DeleteMapping("/api/antifraud/stolencard/{number}")
-    public ResponseEntity<?> delStrolencard(@PathVariable String number){
+    public ResponseEntity<?> delStrolencard(@PathVariable @CardConstraint String number){
         antiFraudService.deleteStrolencard(number);
         HashMap<String, String> map = new HashMap<>();
         map.put("status", String.format("Card %s successfully removed!", number));
         return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ExceptionHandler({ ConstraintViolationException.class })
+    public ResponseEntity<?> handleException(Exception e) {
+        return new ResponseEntity<>(e.getCause(), HttpStatus.BAD_REQUEST);
     }
 }

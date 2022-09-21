@@ -1,6 +1,6 @@
 package antifraud.web.controller.service;
 
-import antifraud.mappers.SuspiciousIpDtoMapper;
+import antifraud.mappers.SuspiciousIpDtoMapperMyImpl;
 import antifraud.persistence.dao.StolenCardRepository;
 import antifraud.persistence.dao.SuspiciousIpRepository;
 import antifraud.persistence.model.StolenCard;
@@ -18,8 +18,8 @@ import java.util.List;
 public class AntiFraudService {
     @Autowired
     private SuspiciousIpRepository suspiciousIpRepository;
-    @Autowired
-    private SuspiciousIpDtoMapper suspiciousIpDtoMapper;
+//    @Autowired
+//    private SuspiciousIpDtoMapperMyImpl suspiciousIpDtoMapper;
     @Autowired
     private StolenCardRepository stolenCardRepository;
 
@@ -30,7 +30,7 @@ public class AntiFraudService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "IP is already in the database");
         }
 
-        SuspiciousIp newSuspiciousIp = suspiciousIpDtoMapper.toEntity(suspiciousIpDto);
+        SuspiciousIp newSuspiciousIp = SuspiciousIpDtoMapperMyImpl.toEntity(suspiciousIpDto);
         suspiciousIpRepository.save(newSuspiciousIp);
         return newSuspiciousIp;
     }
