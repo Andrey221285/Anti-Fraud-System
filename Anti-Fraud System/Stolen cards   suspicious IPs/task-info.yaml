@@ -1809,6 +1809,36 @@ files:
 - name: src/antifraud/web/dto/ResponseAddTransactionDto.java
   visible: true
   learner_created: true
+- name: src/antifraud/mappers/SuspiciousIpDtoMapperMyImpl.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/mappers/UserDTOMapperMyImpl.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/232/stages/1164/implement#comment
 status: Failed
+feedback:
+  message: |2
+
+    FAILURE: Build failed with an exception.
+
+    * What went wrong:
+    Could not resolve all files for configuration &#39;classpath&#39;.
+    &gt; Could not resolve com.github.hyperskill.hs-gradle-plugin:build:release-SNAPSHOT.
+      Required by:
+          unspecified:unspecified:unspecified &gt; com.github.hyperskill:hs-gradle-plugin:release-SNAPSHOT:v1.1-g905ba16-19
+       &gt; Could not resolve com.github.hyperskill.hs-gradle-plugin:build:release-SNAPSHOT.
+          &gt; Could not get resource &#39;https://jitpack.io/com/github/hyperskill/hs-gradle-plugin/build/release-SNAPSHOT/build-release-v1.1-g905ba16-19.pom&#39;.
+             &gt; Could not HEAD &#39;https://jitpack.io/com/github/hyperskill/hs-gradle-plugin/build/release-SNAPSHOT/build-release-v1.1-g905ba16-19.pom&#39;.
+                &gt; Read timed out
+
+    * Try:
+    &gt; Run with --stacktrace option to get the stack trace.
+    &gt; Run with --info or --debug option to get more log output.
+    &gt; Run with --scan to get full insights.
+
+    * Get more help at https://help.gradle.org
+
+    BUILD FAILED in 2m 5s
+  time: Tue, 20 Sep 2022 11:48:12 UTC
 record: 3

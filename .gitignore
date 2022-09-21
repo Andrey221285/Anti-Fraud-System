@@ -1,0 +1,7 @@
+
+.gradle/
+.idea/
+Anti-Fraud System/task/build
+Anti-Fraud System/task/out
+
+*.class
